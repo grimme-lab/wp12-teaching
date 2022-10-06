@@ -1,0 +1,13 @@
+.. This is the definition for some extra symbols needed in the documents.
+
+.. |angst|  unicode:: U+00C5 .. angstrom unit symbol
+.. |crosso| unicode:: U+00F8 .. lowercase crossed o letter like \{o} in LaTeX
+.. |mult|   unicode:: U+22C5 .. multiplication dot operator
+.. |lrarr|  unicode:: U+2194 .. like \leftrightarrow in LaTeX
+.. |irarr|  unicode:: U+2192 .. arrow for irreversible chemical reaction
+.. |eqarr|  unicode:: U+21CC .. arrow for chemical equilibrium reaction
+.. |eps|    unicode:: U+03B5 .. lowercase letter epsilon
+.. |zeta|   unicode:: U+03B6 .. lowercase letter zeta
+.. |delta|  unicode:: U+03B4 .. lowercase letter delta
+.. |pi|     unicode:: U+03C0 .. lowercase letter pi
+.. |kappa|  unicode:: U+03BA .. lowercase letter kappa

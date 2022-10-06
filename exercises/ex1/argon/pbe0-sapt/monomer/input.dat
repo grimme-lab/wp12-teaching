@@ -1,0 +1,19 @@
+molecule argon {
+     0 1
+     Ar  0.000000   0.000000  -1.880079
+
+     units angstrom
+     symmetry c1
+     no_reorient
+}
+
+set basis                  aug-cc-pVQZ
+
+scf_e, scf_wfn = energy('pbe0', return_wfn=True)
+
+HOMO = scf_wfn.epsilon_a_subset('AO', 'ALL').np[scf_wfn.nalpha()-1]
+LUMO = scf_wfn.epsilon_a_subset('AO', 'ALL').np[scf_wfn.nalpha()]
+
+print("\nThe HOMO energy is     %16.8f hartree" % HOMO)
+print("\nThe LUMO energy is     %16.8f hartree" % LUMO)
+print("\nThe HOMO - LUMO gap is %16.8f hartree" % (LUMO - HOMO))

@@ -1,0 +1,19 @@
+molecule argon_dimer {
+     0 1
+     Ar  0.000000   0.000000   1.880079
+     --
+     0 1
+     Ar  0.000000   0.000000  -1.880079
+
+     units angstrom
+     no_reorient
+     symmetry c1
+}
+
+set basis aug-cc-pVQZ
+
+energy('sapt0')
+energy('sapt2')
+energy('sapt2+')
+energy('sapt2+(3)')
+energy('sapt2+3')
