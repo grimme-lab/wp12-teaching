@@ -14,7 +14,6 @@ if [ ! -e $PSIS ]; then
 fi
 export PSI_SCRATCH=$PSIS
 
-
 # VASP5.4
 export PATH=/home/abt-grimme/AK-bin/vasp/bin:$PATH
 

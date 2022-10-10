@@ -57,34 +57,12 @@ working in the terminal. You can find further information in the `Ubuntu wiki <h
 To be able to use a program, the system needs to know where to find it.
 You can achieve this by modifying the ``PATH`` environment variable via the ``.bashrc`` in your ``/home/$USER/`` directory. 
 Most of the executables we need are in the ``/home/abt-grimme/AK-bin/`` directory. For the usage of PSI4, the respective conda environment has to be activated.
-The ``.bashrc`` should look like this (if it does not exist, create it):
+The ``.bashrc`` should look like the following and can also be found in the ``config`` directory in the WP12
+`GitHub Repository <https://github.com/grimme-lab/wp12-teaching/tree/main/config>`_
+(if it does not exist, create it):
 
-.. code-block:: none
+.. literalinclude:: ../config/.bashrc
    :linenos:
-
-   #AK-bin
-   export PATH=/home/abt-grimme/AK-bin:$PATH
-
-   # TURBOMOLE.7.6
-   export TURBODIR=/home/abt-grimme/TURBOMOLE.7.6/
-   source $TURBODIR/Config_turbo_env
-
-   #PSI4
-   . /software/psi4conda/etc/profile.d/conda.sh\nconda activate
-
-   # VASP5.4
-   export PATH=/home/abt-grimme/AK-bin/vasp/bin:$PATH
-
-   # CRYSTAL14
-   export PATH=/home/abt-grimme/crystal/14:$PATH
-
-   # COSMORS
-   export PATH=/opt/COSMOlogic/COSMOthermX16/COSMOtherm/BIN-LINUX/:$PATH
-
-   # MPICH2
-   export LD_LIBRARY_PATH=/home/abt-grimme/mpich2/lib:$LD_LIBRARY_PATH
-   export PATH=/home/abt-grimme/mpich2/bin:$PATH
-
 
 .. important:: Changes only apply to shells opened after changing your ``.bashrc``.
 
