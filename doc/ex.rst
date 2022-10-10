@@ -68,7 +68,7 @@ The SAPT ansatz gives the ﬁrst and second-order complexation energies based on
       Additional outputs may still be found in the standard output of your system. You can find further information about PSI4 and SAPT calculations in the `PSI 4 documentation <https://psicode.org/psi4manual/master/sapt.html>`_.
 
 2. Calculate the HF-SAPT2 potential energy surface for the argon dimer. Discuss the diﬀerent ﬁrst and second order contributions at the diﬀerent distances. 
-   What characteristic distance dependence do you see for the ﬁrst order exchange :math:`E^1_{exch}` and the second order dispersion :math:`E^2_{disp}`?
+   What characteristic distance dependence do you see for the ﬁrst order exchange :math:`E^{(1)}_{exch}` and the second order dispersion :math:`E^{(2)}_{disp}`?
 
    .. admonition:: Technical procedure
 
@@ -150,6 +150,8 @@ Molecules in solution
    Calculate the equilibrium association free energy :math:`\Delta G_a` of a molecular "tweezer"
    with tetracyanoquinone (TCNQ) at room temperature solvated in **toluene**.
 
+**Approach**
+
 The host-guest system is again treated in a supermolecular approach. The association free energy
 :math:`\Delta G_a` is given by
 
@@ -202,6 +204,8 @@ Organic solids
 .. admonition:: Exercise 1.4
 
    Calculate the sublimation enthalpy of the urea crystal at room temperature.
+
+**Approach**
 
 The sublimation enthalpy :math:`\Delta H_{sub}` at temperature :math:`T` is given by the enthalpy
 difference of the two phases:
