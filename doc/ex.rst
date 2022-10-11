@@ -193,7 +193,7 @@ explicitly on the temperature and solvent.
 
    .. admonition:: Technical procedure
 
-      The COSMO-RS model can be used via TURBOMOLE 7.4 and the ``cosmosolv_prak`` script (option
+      The COSMO-RS model can be used via TURBOMOLE and the ``cosmosolv_prak`` script (option
       ``-scf``). The input file ``~/.cosmothermrc`` has to be modified to match the correct solvent
       (see Section :ref:`COSMOtherm`).
 
