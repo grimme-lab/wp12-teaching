@@ -253,6 +253,10 @@ approximation:
    (minimum distance to image of 12 |angst|) and the crystal geometry includes all symmetry
    transformations of the required space group.
 
+   .. hint:: 
+      
+      Sometimes, the ``cif2crystal`` program does not work correctly. In this case, it's worth checking if there are activated ``Conda`` environments. If so, deactivate them and try again.
+
 2. Calculate the electronic energies at the TPSS-D3\ :sup:`ATM`/600 eV level. How large is the
    London dispersion contribution to the lattice energy?
 
