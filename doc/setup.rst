@@ -79,25 +79,10 @@ COSMOtherm
 ~~~~~~~~~~
 
 The ``cosmosolv`` script needs the ``.cosmothermrc`` ﬁle in which parameters for the
-solvents are speciﬁed. The ``.comsothermrc`` you will need is as follows:
+solvents are speciﬁed. The ``.cosmothermrc`` you will need is as follows:
 
-.. code-block:: none
+.. literalinclude:: ../config/.cosmothermrc
    :linenos:
-
-   ctd =BP_TZVP_C30_1601.ctd cdir = /opt/COSMOlogic/COSMOthermX16/COSMOtherm/CTDATA-FILES
-   EFILE VPFILE
-   f = toluene.cosmo fdir=/opt/COSMOlogic/COSMOthermX16/COSMOtherm/DATABASE-COSMO/BP-TZVP-COSMO autoc
-   f = out.ccf
-   henry xh={ 1.0 0.0 } tc=-50.0 Gsolv
-   henry xh={ 1.0 0.0 } tc=-10.0 Gsolv
-   henry xh={ 1.0 0.0 } tc=0.0 Gsolv
-   henry xh={ 1.0 0.0 } tc=10.0 Gsolv
-   henry xh={ 1.0 0.0 } tc=20.0 Gsolv
-   henry xh={ 1.0 0.0 } tc=25.0 Gsolv
-   henry xh={ 1.0 0.0 } tc=30.0 Gsolv
-   henry xh={ 1.0 0.0 } tc=40.0 Gsolv
-   henry xh={ 1.0 0.0 } tc=50.0 Gsolv
-   henry xh={ 1.0 0.0 } tc=60.0 Gsolv
 
 Create this ﬁle in your /home/$USER/ directory.
 
