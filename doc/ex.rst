@@ -171,14 +171,15 @@ explicitly on the temperature and solvent.
    Experimental value: :math:`\Delta G_{a}^{(298 K)} = -4.50` kcal\ |mult|\ mol\ :sup:`-1`
 
 1. Calculate the electronic energy contribution with the (two- and three-body dispersion) corrected
-   meta-GGA density functional TPSS-D3\ :sup:`ATM` in the def-TZVP single particle basis set.
+   meta-GGA density functional TPSS-D3\ :sup:`ATM`\ (BJ) in the def-TZVP single particle basis set.
    Correct for the basis set superposition error via the geometrical counterpoise correction (gCP).
 
    .. admonition:: Technical procedure
 
       TPSS-D3/def-TZVP geometries are provided. Calculate a TPSS single-point energy with TURBOMOLE.
-      The D3\ :sup:`ATM` contribution can be calculated with the ``dftd3`` program and the
-      counterpoise correction with the ``gcp`` program.
+      Calculate the D3\ :sup:`ATM`\ (BJ) contribution with the ``dftd3`` standalone program.
+      (Attention: ``cefine`` sets a dispersion correction by default. Make sure that you don't
+      double-count it.) The counterpoise correction can be calculated with the ``gcp`` program.
 
 2. Calculate the vibrational contributions in the rigid rotor harmonic oscillator model at the
    semiempirical GFN2-xTB level.
@@ -257,15 +258,15 @@ approximation:
       
       Sometimes, the ``cif2crystal`` program does not work correctly. In this case, it's worth checking if there are activated ``conda`` environments. If so, deactivate them and try again.
 
-2. Calculate the electronic energies at the TPSS-D3\ :sup:`ATM`/600 eV level. How large is the
+2. Calculate the electronic energies at the TPSS-D3\ :sup:`ATM`\ (BJ)/600 eV level. How large is the
    London dispersion contribution to the lattice energy?
 
    .. admonition:: Technical procedure
 
-      Fully optimized (TPSS-D3\ :sup:`ATM`) geometries for the urea molecule and the urea solid are
-      available. Adjust the Brillouin sampling to a :math:`k` grid of approximately 1/35
-      Bohr\ :sup:`-1`. Use VASP 5.4 to calculate a TPSS-D3\ :sup:`ATM`/600 eV single-point energy
-      for the gas and solid phase. The calculations can be done via the CRYSTAL 14 interface:
+      Fully optimized (TPSS-D3\ :sup:`ATM`\ (BJ)) geometries for the urea molecule and the urea
+      solid are available. Adjust the Brillouin sampling to a :math:`k` grid of approximately 1/35
+      Bohr\ :sup:`-1`. Use VASP 5.4 to calculate a TPSS-D3\ :sup:`ATM`\ (BJ)/600 eV single-point
+      energy for the gas and solid phase. The calculations can be done via the CRYSTAL 14 interface:
 
       .. code-block:: none
 
@@ -276,9 +277,9 @@ approximation:
 
    .. admonition:: Technical procedure
 
-      a. Re-optimize the TPSS-D3\ :sup:`ATM` geometries of both phases with the CRYSTAL 14 program
-         and the DFTB3-D3 Hamiltonian. Modify the ``INPUT`` file for the solid to sample the
-         :math:`k`-space identical to 1. Start the program by:
+      a. Re-optimize the TPSS-D3\ :sup:`ATM`\ (BJ) geometries of both phases with the CRYSTAL 14
+         program and the DFTB3-D3 Hamiltonian. Modify the ``INPUT`` file for the solid to sample
+         the :math:`k`-space identical to 1. Start the program by:
 
          .. code-block:: none
 
@@ -286,27 +287,11 @@ approximation:
 
       b. Calculate the phonon spectrum at the :math:`\Gamma`-point with identical setup at the
          optimized geometry. In order to include low-lying (acoustic) modes of the solid, a
-         supercell has to be generated. Increase the supercell until the energy contributions are
-         converged within 0.1 kcal\ |mult|\ mol\ :sup:`-1`. The contributions can be taken from the
-         output block:
-
-         .. code-block:: none
-
-            ***********************************************************************
-            HARMONIC VIBRATIONAL CONTRIBUTIONS TO THERMODYNAMIC FUNCTIONS AT GIVEN
-            TEMPERATURE AND PRESSURE:
-            .
-            .
-            .
-
-            THERMAL ENERGY       AU            EV             J/MOL
-            Translational:
-            Rotational:
-            E0(Vibrational)
-            Vibr. corr.:
-            Total:
-
-         The volume work can be found in the ``THERMODYNAMIC FUNCTIONS`` block.
+         supercell has to be generated (you find proper placeholders in the ``INPUT`` file).
+         Increase the supercell until the energy contributions are converged within
+         0.1 kcal\ |mult|\ mol\ :sup:`-1`. The contributions can be taken from the output blocks
+         in the calculation output entitled ``HARMONIC VIBRATIONAL CONTRIBUTIONS`` and
+         ``THERMODYNAMIC FUNCTIONS``.
 
 4. Compare the calculated sublimation enthalpy with the experimental one. Explain why no thermal
    effects are included in the DFT energy and how this energy could be improved. Which significant
