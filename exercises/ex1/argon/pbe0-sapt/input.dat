@@ -12,8 +12,8 @@ molecule argon_dimer {
 
 set {
     basis                  aug-cc-pVQZ
-    sapt_dft_grac_shift_a  0.139
-    sapt_dft_grac_shift_b  0.139
+    sapt_dft_grac_shift_a  X
+    sapt_dft_grac_shift_b  X
 }
 
 energy('sapt(dft)')
