@@ -65,7 +65,7 @@ The SAPT ansatz gives the ﬁrst and second-order complexation energies based on
    .. hint::
 
       PSI4 uses input files to perform calculations. The default input file name is ``input.dat``. You can change this via command line options. PSI4 also uses an output file ``output.dat`` by default.
-      Additional outputs may still be found in the standard output of your system. You can find further information about PSI4 and SAPT calculations in the `PSI 4 documentation <https://psicode.org/psi4manual/master/sapt.html>`_.
+      Additional outputs may still be found in the standard output of your system. If PSI4 returns an error message about insufficient memory, try to provide the sufficient amount of memor  to the calculation with the keyword ``--memory xxGB``. You can find further information about PSI4 and SAPT calculations in the `PSI 4 documentation <https://psicode.org/psi4manual/master/sapt.html>`_.
 
 2. Calculate the HF-SAPT2/aug-cc-pVQZ potential energy surface for the argon dimer. Discuss the different first and second order contributions at the different distances
    and plot the total electrostatic, exchange, induction, and dispersion contributions as well as the total SAPT2 interaction energy with respect to the
