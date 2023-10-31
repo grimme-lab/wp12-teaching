@@ -143,7 +143,7 @@ You can do that, by using the following options:
 
 Please note that after the optimization the input structure, e.g., the coord ﬁle is not
 overwritten and will be on the ﬁle ``xtbopt.coord``. You will have to use this ﬁle for the
-calculation of the Hessian.
+calculation of the Hessian. If you encounter significant imaginary frequencies, try to optimize the created xtbhess file e.g. ``xtbhess.coord`` and use the optimized structure for another Hessian calculation.
 
 Calculating the k-Grid
 ~~~~~~~~~~~~~~~~~~~~~~
