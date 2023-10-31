@@ -21,7 +21,7 @@ export PATH=/home/abt-grimme/AK-bin/vasp/bin:$PATH
 export PATH=/home/abt-grimme/crystal/14:$PATH
 
 # COSMORS
-export PATH=/opt/COSMOlogic/COSMOthermX16/COSMOtherm/BIN-LINUX/:$PATH
+export PATH=/opt/COSMOlogic/COSMOthermX19/COSMOtherm/BIN-LINUX/:$PATH
 
 # MPICH2
 export LD_LIBRARY_PATH=/home/abt-grimme/mpich2/lib:$LD_LIBRARY_PATH
