@@ -132,7 +132,8 @@ The following exponents have been optimized according to the different basis set
    .. admonition:: Technical procedure
 
       The equilibrium geometries can be taken from Chapter :ref:`Partitioning noncovalent
-      interactions`. Use the TURBOMOLE input generator ``cefine_current`` to prepare the calculations.
+      interactions`. Use the TURBOMOLE input generator ``cefine_current`` to prepare the calculations (try ``-h`` to figure out which options you have to use). 
+      Generally add ``-sym c1`` to your cefine call to avoid smmetry-related problems.
       First do a canonical Hartree-Fock calculation (``ridft``) and then compute the correlation
       energy (``ccsdf12`` for CCSD(T) and ``ricc2`` for MP2).
 
