@@ -85,7 +85,7 @@ Supermolecular approaches
 
 .. admonition:: Exercise 1.2
 
-   Calculate reference binding energies for the water and the argon dimer.
+   Calculate reference binding energies for the water and the argon dimer using the provided relaxed geometries.
 
 **Approach**
 
