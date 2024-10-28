@@ -15,5 +15,3 @@ HOMO = scf_wfn.epsilon_a_subset('AO', 'ALL').np[scf_wfn.nalpha()-1]
 LUMO = scf_wfn.epsilon_a_subset('AO', 'ALL').np[scf_wfn.nalpha()]
 
 print("\nThe HOMO energy is     %16.8f hartree" % HOMO)
-print("\nThe LUMO energy is     %16.8f hartree" % LUMO)
-print("\nThe HOMO - LUMO gap is %16.8f hartree" % (LUMO - HOMO))
