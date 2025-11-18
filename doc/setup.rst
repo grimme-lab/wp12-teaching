@@ -56,7 +56,9 @@ working in the terminal. You can find further information in the `Ubuntu wiki <h
 
 To be able to use a program, the system needs to know where to find it.
 You can achieve this by modifying the ``PATH`` environment variable via the ``.bashrc`` in your ``/home/$USER/`` directory. 
-Most of the executables we need are in the ``/home/abt-grimme/AK-bin/`` directory. For the usage of PSI4, the respective conda environment has to be activated.
+The ``.bashrc`` covers the main setup of the PSI4, VASP, CRYSTAL, and COSMO-RS software as well as the configuration of thread
+usage and memory limits so these programs run with a fixed number of CPU threads and enough stack space to avoid crashes.
+Additonally, for the usage of PSI4, the respective conda environment has to be activated.
 The ``.bashrc`` should look like the following and can also be found in the ``config`` directory in the WP12
 `GitHub Repository <https://github.com/grimme-lab/wp12-teaching/tree/main/config>`_
 (if it does not exist, create it):
@@ -88,25 +90,28 @@ Create this ﬁle in your /home/$USER/ directory.
 
 .. hint:: This is a general input file for the COSMOtherm program. The ``cosmosolv`` copies this file as an input for your calculation. If you are interested, you can find further information about COSMOtherm input files in the COSMOtherm manual.
 
-GFN-xTB
+GFN-xTB, gCP, TURBOMOLE, and DFTD3
 ~~~~~~~
 
-First, make sure that the ``xtb_prak`` program is in your ``PATH`` variable. You can test this with the command
+GFN-xTB, gCP, TURBOMOLE, and DFTD3 can be made available via the following commands.
 
 .. code-block:: none
 
-   which xtb_prak
-
-This shows the path to the program. If everything was set up correctly it should in
-our case show the path 
+   module load xtb/prak
 
 .. code-block:: none
 
-   /home/abt-grimme/AK-bin/xtb_prak  
+   module load gcp
 
-If this doesn’t show up check the ``PATH`` setup again.
+.. code-block:: none
 
-Add the following to the ``.bashrc`` :
+   module load turbomole
+
+.. code-block:: none
+
+   module load dftd3
+
+Please make sure to have these lines added to your ``.bashrc`` :
 
 .. code-block:: none
 
@@ -115,7 +120,7 @@ Add the following to the ``.bashrc`` :
    ulimit -s unlimited
    export OMP_STACKSIZE=1000m
 
-This sets up ``GFN-xTB`` correctly and sources the parameter ﬁles.
+As mentioned above, these lines make the programs use a set number of CPU threads and give them plenty of memory so they run smoothly without running out of stack space.
 
 Specific usage instructions
 ---------------------------
@@ -170,3 +175,14 @@ where *s*\ :sub:`i` are the corresponding dimensionless SHRINK parameter, rounde
 non-zero integer. Note that the a ⃗\ :sub:`i` in fort.34 are in Ångström.
 When converting a ``.cif`` file with ``cif2crystal`` you will receive the k-mesh density and the
 SHRINK parameters corrsponding to the structure automatically.
+
+Please note that for ``cif2crystal`` to work as intended, it expects a working ``python`` interpreter which we provide for you in a suitable ``conda`` environment that you can activate as follows.
+
+.. code-block:: none
+
+   module load conda
+.. code-block:: none
+
+   conda activate py27
+
+You should now see a ``(py27)`` appear in the lower left corner as part of your shell prompt.  
