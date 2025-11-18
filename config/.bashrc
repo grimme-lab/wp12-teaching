@@ -1,10 +1,3 @@
-#AK-bin
-export PATH=/home/abt-grimme/AK-bin:$PATH
-
-# TURBOMOLE.7.6
-export TURBODIR=/home/abt-grimme/TURBOMOLE.7.6/
-source $TURBODIR/Config_turbo_env
-
 #PSI4
 . /software/psi4conda/etc/profile.d/conda.sh
 conda activate
@@ -22,10 +15,6 @@ export PATH=/home/abt-grimme/crystal/14:$PATH
 
 # COSMORS
 export PATH=/opt/COSMOlogic/COSMOthermX19/COSMOtherm/BIN-LINUX/:$PATH
-
-# MPICH2
-export LD_LIBRARY_PATH=/home/abt-grimme/mpich2/lib:$LD_LIBRARY_PATH
-export PATH=/home/abt-grimme/mpich2/bin:$PATH
 
 #xTB
 export OMP_NUM_THREADS=4
