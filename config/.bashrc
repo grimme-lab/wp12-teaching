@@ -16,7 +16,7 @@ export PATH=/home/abt-grimme/crystal/14:$PATH
 # COSMORS
 export PATH=/opt/COSMOlogic/COSMOthermX19/COSMOtherm/BIN-LINUX/:$PATH
 
-#xTB
+# Set thread counts and use a larger stack
 export OMP_NUM_THREADS=4
 export MKL_NUM_THREADS=4
 ulimit -s unlimited
