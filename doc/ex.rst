@@ -179,7 +179,7 @@ explicitly on the temperature and solvent.
       TPSS-D3/def-TZVP geometries are provided. Calculate a TPSS single-point energy with TURBOMOLE.
       Calculate the D3\ :sup:`ATM`\ (BJ) contribution with the ``dftd3`` standalone program.
       (Attention: ``cefine`` sets a dispersion correction by default. Make sure that you don't
-      double-count it.) The counterpoise correction can be calculated with the ``gcp`` program. Use the ``-h`` (help) option of dftd3 and gcp to figure out the desired options. Make sure you are using the correct gcp version (v2.01), if not try calling the program with the whole path ``/home/abt-grimme/AK-bin/gcp`` 
+      double-count it.) The counterpoise correction can be calculated with the ``gcp`` program. Use the ``-h`` (help) option of dftd3 and gcp to figure out the desired options. Make sure you are using the correct gcp version (v2.01), if not try loading the program with ``module load gcp/2.01`` 
 
 2. Calculate the vibrational contributions in the rigid rotor harmonic oscillator model at the
    semiempirical GFN2-xTB level.
