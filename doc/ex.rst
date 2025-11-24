@@ -266,7 +266,11 @@ approximation:
       Fully optimized (TPSS-D3\ :sup:`ATM`\ (BJ)) geometries for the urea molecule and the urea
       solid are available. Adjust the Brillouin sampling to a :math:`k` grid of approximately 1/35
       Bohr\ :sup:`-1`. Use VASP 5.4 to calculate a TPSS-D3\ :sup:`ATM`\ (BJ)/600 eV single-point
-      energy for the gas and solid phase. The calculations can be done via the CRYSTAL 14 interface:
+      energy for the gas and solid phase. The calculations can be done via the CRYSTAL 14 interface. 
+      Note that due to some internal restructuring for the VASP calculation, the interface broke. 
+      You can nevertheless obtain the correct energy using the command below to generate the vasp
+      input file, do the VASP calculation by simply typing in ``vasp`` and then collect the results 
+      by again typing the command below.
 
       .. code-block:: none
 
