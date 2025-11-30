@@ -8,7 +8,7 @@ fi
 export PSI_SCRATCH=$PSIS
 
 # make modules available
-. ${BASH_ENV} >/dev/null
+. ${BASH_ENV} > /dev/null
 
 # VASP5.4
 export PATH=/home/abt-grimme/AK-bin/vasp/bin:$PATH
