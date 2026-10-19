@@ -43,6 +43,7 @@ Partitioning noncovalent interactions
 
    Partition the interactions of three weakly bound dimers (namely the water dimer, the
    argon dimer, and the uracil dimer) and identify the dominant binding motifs.
+   Investigate the three-body effect in the case of two isomers of argon trimers.
 
 **Approach**
 
@@ -147,6 +148,10 @@ The SAPT ansatz gives the ﬁrst and second-order complexation energies based on
 
       The calculated values can be obtained using the ``parse_output_scan_sapt2.py`` python script.
       To get their functional form, plot the distance dependence and fit an appropriate function to the first order exchange and second order dispersion contribution. 
+
+3. Calculate the D3\ :sup:`ATM`\ (BJ) dispersion energy contributions for linear and triangular argon trimers. 
+   Apply the ``dftd3`` software to the optimized structures at the TPSS density functional level.
+   How does including the ATM affect each arrangement? Explain the differences, also w.r.t. to two-body dispersion part. 
 
 
 .. _Supermolecular approaches:
