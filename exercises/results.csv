@@ -58,6 +58,15 @@ Edisp,,kcal/mol
 Eexch-disp,,kcal/mol
 ,,
 ,,
+Ar3 (triangular),,
+Dispersion correction energy (DFTD3-BJ+ATM),,Hartree
+ATM 3-body dispersion term only ,,Hartree
+,,
+Ar3 (linear),,
+Dispersion correction energy (DFTD3-BJ+ATM),,Hartree
+ATM 3-body dispersion term only ,,Hartree
+,,
+,,
 Ex2,,
 ,,
 ,,
@@ -94,22 +103,22 @@ Ex3,,
 ,,
 ,,
 Host,,
-SP energy (TPSS/def-TZVP),,Hartree
-Dispersion correction energy (DFTD3-BJ+ABC),,Hartree
-CP correction energy (gcp),,Hartree
-delta G vibrational (mRRHO: GFN-xTB),,Hartree
-COSMO-RS solvation energy,,Hartree
+SP energy (PBE0/def2-TZVP),,Hartree
+Dispersion correction energy (DFTD3-BJ+ATM),,Hartree
+ATM 3-body dispersion term only ,,Hartree
+"delta G vibrational (mRRHO: GFN2-xTB, alpb(toluene))",,Hartree
+COSMO-RS Gsolv+VWork(298.15 K),,Hartree
 ,,
 Guest,,
-SP energy (TPSS/def-TZVP),,Hartree
-Dispersion correction energy (DFTD3-BJ+ABC),,Hartree
-CP correction energy (gcp),,Hartree
-delta G vibrational (mRRHO: GFN-xTB),,Hartree
-COSMO-RS solvation energy,,Hartree
+SP energy (PBE0/def2-TZVP),,Hartree
+Dispersion correction energy (DFTD3-BJ+ATM),,Hartree
+ATM 3-body dispersion term only ,,Hartree
+"delta G vibrational (mRRHO: GFN2-xTB, alpb(toluene))",,Hartree
+COSMO-RS Gsolv+VWork(298.15 K),,Hartree
 ,,
 Complex,,
-SP energy (TPSS/def-TZVP),,Hartree
-Dispersion correction energy (DFTD3-BJ+ABC),,Hartree
-CP correction energy (gcp),,Hartree
-delta G vibrational (mRRHO: GFN-xTB),,Hartree
-COSMO-RS solvation energy,,Hartree
+SP energy (PBE0/def2-TZVP),,Hartree
+Dispersion correction energy (DFTD3-BJ+ATM),,Hartree
+ATM 3-body dispersion term only ,,Hartree
+"delta G vibrational (mRRHO: GFN2-xTB, alpb(toluene))",,Hartree
+COSMO-RS Gsolv+VWork(298.15 K),,Hartree
