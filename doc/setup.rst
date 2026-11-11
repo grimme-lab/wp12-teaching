@@ -33,8 +33,6 @@ The following programs will be used:
      - ``cosmosolv_prak`` (script that calls COSMOtherm)
    * - `xTB 6.7.1 <https://github.com/grimme-lab/xtb>`_
      - ``xtb``
-   * - `gCP 2.01 <https://www.chemie.uni-bonn.de/grimme/de/software/gcp/mangcp.pdf>`_
-     - ``gcp``
    * - `DFTD3 <https://www.chemie.uni-bonn.de/grimme/de/software/dft-d3/get_dft-d3>`_
      - ``dftd3``
 
@@ -78,18 +76,14 @@ Note the reference to the ``toluene.cosmo`` file in line 3, specifying solvation
 
 .. hint:: This is a general input file for the COSMOtherm program. ``cosmosolv`` uses this file as an input for your calculation. If you are interested, you can find further information about COSMOtherm input in the COSMOtherm manual.
 
-xTB, gCP, TURBOMOLE, and DFTD3
-~~~~~~~
+xTB, TURBOMOLE, and DFTD3
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
-xTB, gCP, TURBOMOLE, and DFTD3 can be made available via the following commands.
+xTB, TURBOMOLE, and DFTD3 can be made available via the following commands.
 
 .. code-block:: none
 
    module load xtb
-
-.. code-block:: none
-
-   module load gcp/2.01
 
 .. code-block:: none
 
@@ -107,6 +101,15 @@ Please make sure to have these lines added to your ``.bashrc`` to ensure ``xTB``
    export MKL_NUM_THREADS=8
    ulimit -s unlimited
    export OMP_STACKSIZE=1000m
+
+
+PBE0/def2-TZVP single-point calculations for :ref:`Exercise 3 <exercise-3>` may take several hours
+without parallelization. Set the following environment variables before starting the TURBOMOLE calculations:
+
+.. code-block:: none
+
+   export PARA_ARCH=SMP
+   export PARNODES=8
 
 Specific Usage Instructions
 ---------------------------
@@ -130,9 +133,10 @@ which provides access to molecular vibrational information as used for correctin
 modified rigid-rotor harmonic-oscillator model (mRRHO, `Grimme, Chem. Eur. J. 2012, 18, 9955–9964 <https://doi.org/10.1002/chem.201200497>`_).
 
 To do that, additional command-line options may be specified:
- | ``--opt`` : structure optimization
+ | ``--opt <level>`` : structure optimization (with optional specification of the optimization level, e.g., ``extreme``)
  | ``--hess`` : compute Hessian (second derivatives w.r.t. nuclear coordinates)
- | ``--ohess`` : do both with one option
+ | ``--ohess <level>`` : do both with one option (with optional specification of the optimization level)
+ | ``--alpb <solvent>`` : use the ALPB solvation model with the specified solvent (e.g., ``toluene``)
 
 Please note that xTB does not overwrite your initial input structure after optimization, but rather writes the optimized coordinates to the ``xtbopt.coord`` file. Use this ﬁle for the
 subsequent Hessian calculation and **not** your original input file, as this would lead to imaginary frequencies (negative wave numbers).

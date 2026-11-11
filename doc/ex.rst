@@ -39,6 +39,8 @@ Noncovalent Interactions
 Partitioning noncovalent interactions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. _exercise-1:
+
 .. admonition:: Exercise 1
 
    Partition the interactions of three weakly bound dimers (namely the water dimer, the
@@ -149,15 +151,19 @@ The SAPT ansatz gives the ﬁrst and second-order complexation energies based on
       The calculated values can be obtained using the ``parse_output_scan_sapt2.py`` python script.
       To get their functional form, plot the distance dependence and fit an appropriate function to the first order exchange and second order dispersion contribution. 
 
-3. Calculate the D3\ :sup:`ATM`\ (BJ) dispersion energy contributions for linear and triangular argon trimers. 
+   .. _exercise-1-3:
+
+3. Calculate the D3\ :sup:`ATM`\ (BJ) dispersion energy contributions for linear and triangular argon trimers.
    Apply the ``dftd3`` software to the optimized structures at the TPSS density functional level.
-   How does including the ATM affect each arrangement? Explain the differences, also w.r.t. to two-body dispersion part. 
+   How does the ATM three-body contribution differ between the two arrangements? Explain the difference in relation to the corresponding two-body dispersion contributions.
 
 
 .. _Supermolecular approaches:
 
 Supermolecular approaches
 ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. _exercise-2:
 
 .. admonition:: Exercise 2
 
@@ -223,14 +229,16 @@ The following exponents have been optimized according to the different basis set
 Molecules in solution
 ~~~~~~~~~~~~~~~~~~~~~
 
+.. _exercise-3:
+
 .. admonition:: Exercise 3
 
-   Calculate the equilibrium association free energy :math:`\Delta G_{\mathrm{a}}` of a molecular "tweezer"
-   with tetracyanoquinone (TCNQ) at room temperature solvated in **toluene**.
+   Calculate the equilibrium association Gibbs free energy :math:`\Delta G_{\mathrm{a}}` of a molecular tweezer
+   with tetracyanoquinone (TCNQ) in **toluene** at room temperature.
 
 **Approach**
 
-The host-guest system is again treated in a supermolecular approach. The association free energy
+The host-guest system is again treated in a supermolecular approach. The association Gibbs free energy
 :math:`\Delta G_{\mathrm{a}}` is given by
 
 .. math::
@@ -239,39 +247,48 @@ The host-guest system is again treated in a supermolecular approach. The associa
 
 with the electronic gas phase association energy :math:`\Delta E`, a correction to free energies in
 the modified rigid rotor harmonic oscillator (mRRHO) approximation :math:`\Delta G_{\mathrm{mRRHO}}^{T}`, and a correction to
-the solvation free energy :math:`\Delta \delta G_{\mathrm{solv}}^{T}(X)`. These contributions depend
+the solvation Gibbs free energy :math:`\Delta \delta G_{\mathrm{solv}}^{T}(X)`. These contributions depend
 explicitly on the temperature and solvent.
 
 .. hint::
 
-   Experimental value: :math:`\Delta G_{\mathrm{a}}^{(298\,\mathrm{K})} = -4.50` kcal\ |mult|\ mol\ :sup:`-1`
+   | Experimental association Gibbs free energy: :math:`\Delta G_{\mathrm{a}}^{(298\,\mathrm{K})} = -4.50` kcal\ |mult|\ mol\ :sup:`-1`.
+   | Calculated association Gibbs free energy for the lowest-energy complex conformer at the level of theory used here: :math:`\Delta G_{\mathrm{a}}^{(298\,\mathrm{K})} = -4.5337` kcal\ |mult|\ mol\ :sup:`-1`.
 
 1. Calculate the electronic energy contribution with the (two- and three-body dispersion) corrected
-   meta-GGA density functional TPSS-D3\ :sup:`ATM`\ (BJ) in the def-TZVP single particle basis set.
-   Correct for the basis set superposition error via the geometrical counterpoise correction (gCP).
+   hybrid GGA density functional PBE0-D3\ :sup:`ATM`\ (BJ) at the def2-TZVP single particle basis set.
 
    .. admonition:: Technical procedure
 
-      TPSS-D3/def-TZVP geometries are provided. Calculate a TPSS single-point energy with TURBOMOLE.
+      PBE0-D4/def2-TZVP geometries are provided. Calculate a PBE0 single-point energy with TURBOMOLE.
       Calculate the D3\ :sup:`ATM`\ (BJ) contribution with the ``dftd3`` standalone program.
       (Attention: ``cefine`` sets a dispersion correction by default. Make sure that you don't
-      double-count it.) The counterpoise correction can be calculated with the ``gcp`` program. Use the ``-h`` (help) option of dftd3 and gcp to figure out the desired options. Make sure you are using the correct gcp version (v2.01), if not try loading the program with ``module load gcp/2.01`` 
+      double-count it.). Use the ``-h`` (help) option of ``dftd3`` and ``cefine`` to figure out the desired options. 
+      Unfortunately, due to the internal file reader specifications, the ``dftd3`` program cannot read the coord file after the ``cefine`` program has been used.
+      Therefore, calculate the D3 contribution before using the ``cefine`` program. 
+   
+   Compare the fraction of the three-body term contributions to the total dispersion energy corrections for all structures. 
+   Compare to the argon trimer results from the :ref:`Exercise 1.3 <exercise-1-3>`.
 
 2. Calculate the vibrational contributions in the modified rigid rotor harmonic oscillator (mRRHO) model at the
    semiempirical GFN2-xTB level.
 
    .. admonition:: Technical procedure
 
-      First, re-optimize the TPSS-D3 geometries at the GFN2-xTB level. Then calculate the second
+      First, re-optimize the PBE0-D4/def2-TZVP geometries at the GFN2-xTB level in toluene, using the ``ALPB`` solvation model. 
+      Use the ``extreme`` optimization level. Then calculate the second
       derivatives and read the thermodynamic functions printout in the mRRHO approximation of the
-      GFN2-xTB program. Further information is given in Section :ref:`GFN-xTB`.
+      GFN2-xTB program. Confirm that there are no imaginary frequencies, which would indicate that the
+      structure is not a local minimum.
+      Further information is given in Section :ref:`GFN2-xTB`.
 
 3. Compute the solvent corrections with COSMO-RS.
 
    .. admonition:: Technical procedure
 
-      The COSMO-RS model can be used via TURBOMOLE and the ``cosmosolv_prak`` script (option
-      ``-scf``). The input file ``~/.cosmothermrc`` has to be modified to match the correct solvent
-      (see Section :ref:`COSMOtherm`).
+      The COSMO-RS model can be used via TURBOMOLE and the ``cosmosolv_prak`` script (option ``-scf``). 
+      Do not use the ``cosmosolv`` script. The input file ``~/.cosmothermrc`` has to be modified to match the correct solvent
+      (see Section :ref:`COSMOtherm`). Use the ``Gsolv+VWork(298.15 K)`` value from the output.
 
-
+   Do the ``VWork(298.15 K)`` values differ among the three compounds? What does ``VWork`` represent,
+   and why is it important when calculating the solvation Gibbs free energy?
