@@ -6,7 +6,7 @@ Setup and QC Software
 =====================
 
 This section will give a short introduction and an overview of the general Linux setup,
-as well as Quantum Chemistry programs that will be used in this practical course.
+as well as Quantum Chemistry programs that will be used in this part of WP12.
 
 .. contents::
 
@@ -41,6 +41,8 @@ To use any of the programs/executables, take a look at the help output via ``exe
 .. hint::
    You can also find some additional information about TURBOMOLE in our `QC II script <https://qc2-teaching.readthedocs.io/en/latest/apps-setup.html#turbomole>`_.
 
+.. _general-setup:
+
 General Setup
 ~~~~~~~~~~~~~
 
@@ -51,7 +53,7 @@ In our case, the ``.bashrc`` covers the main setup of the PSI4 and COSMO-RS soft
 usage and memory limits such that the programs run with a fixed number of CPU threads and enough stack space to avoid potential crashes. 
 Additionally, PSI4 requires activation of a conda environment.
 Your ``.bashrc`` should look like the following. It can also be found in the ``config`` directory of the WP12
-`GitHub Repository <https://github.com/grimme-lab/wp12-teaching/tree/main/config>`_. Create this file if it does not exist in your home directory yet!
+`GitHub Repository <https://github.com/grimme-lab/wp12-teaching/tree/main/config>`_. Create this file in your home directory if it does not exist yet!
 
 ``.bashrc`` :
 
@@ -65,21 +67,21 @@ Your ``.bashrc`` should look like the following. It can also be found in the ``c
 COSMOtherm
 ~~~~~~~~~~
 
-The ``cosmosolv`` script needs a ``.cosmothermrc`` ﬁle in your home directory, in which the solvent parameters (among other settings) are speciﬁed. 
+The ``cosmosolv`` script needs a ``.cosmothermrc`` ﬁle in your home directory, in which the solvent parameters (among other settings) are speciﬁed for this project. 
 
 ``.cosmothermrc`` :
 
 .. literalinclude:: ../config/.cosmothermrc
    :linenos:
 
-Note the reference to the ``toluene.cosmo`` file in line 3, specifying solvation with toluene.
+Note the reference to the ``toluene.cosmo`` file in line 3, specifying solvation with toluene as needed for :ref:`Exercise 3 <exercise-3>`.
 
-.. hint:: This is a general input file for the COSMOtherm program. ``cosmosolv`` uses this file as an input for your calculation. If you are interested, you can find further information about COSMOtherm input in the COSMOtherm manual.
+.. hint:: This is a general input file for the COSMOtherm program. ``cosmosolv`` uses this file as an input for your calculation. If you are interested, you can find further information about COSMOtherm input in the :download:`COSMOtherm manual <../manuals/man_COSMOtherm.pdf>`.
 
 xTB, TURBOMOLE, and DFTD3
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-xTB, TURBOMOLE, and DFTD3 can be made available via the following commands.
+xTB, TURBOMOLE (TM), and DFTD3 can be made available in the terminal via the following commands:
 
 .. code-block:: none
 
@@ -93,7 +95,7 @@ xTB, TURBOMOLE, and DFTD3 can be made available via the following commands.
 
    module load dftd3
 
-Please make sure to have these lines added to your ``.bashrc`` to ensure ``xTB`` runs with sufficient resources:
+As you can see in the provided ``.bashrc`` file in the :ref:`General Setup <general-setup>` section above, a few technical settings are specified to ensure ``xTB`` runs with sufficient resources:
 
 .. code-block:: none
 
@@ -103,8 +105,9 @@ Please make sure to have these lines added to your ``.bashrc`` to ensure ``xTB``
    export OMP_STACKSIZE=1000m
 
 
-PBE0/def2-TZVP single-point calculations for :ref:`Exercise 3 <exercise-3>` may take several hours
-without parallelization. Set the following environment variables before starting the TURBOMOLE calculations:
+Similarly, Turbomole will utilize only one CPU core by default, which would result in overly long compute times for 
+the single-point calculations needed for :ref:`Exercise 3 <exercise-3>`. Hence, set the following environment
+variables before starting any TURBOMOLE calculations to allow for parallel execution:
 
 .. code-block:: none
 
@@ -128,20 +131,20 @@ A ``GFN2-xTB`` calculation can be initiated via
 where ``<coordinates_input>`` is a valid ``coord`` ﬁle as used with TURBOMOLE or a file in typical ``.xyz`` format, and ``[options]`` are additional command-line options:
 
 
-For instance, in exercise 3, you will have to reoptimize the geometry of a given molecule followed by a calculation of the geometric (nuclear) Hessian,
+For instance, in :ref:`Exercise 3 <exercise-3>`, you will have to reoptimize the geometry of a given molecule followed by a calculation of the geometric (nuclear) Hessian,
 which provides access to molecular vibrational information as used for correcting electronic energies to free energies within the 
 modified rigid-rotor harmonic-oscillator model (mRRHO, `Grimme, Chem. Eur. J. 2012, 18, 9955–9964 <https://doi.org/10.1002/chem.201200497>`_).
 
-To do that, additional command-line options may be specified:
+To obtain this information, additional command-line options may be specified:
  | ``--opt <level>`` : structure optimization (with optional specification of the optimization level, e.g., ``extreme``)
- | ``--hess`` : compute Hessian (second derivatives w.r.t. nuclear coordinates)
- | ``--ohess <level>`` : do both with one option (with optional specification of the optimization level)
+ | ``--hess`` : compute geometric Hessian (second derivatives w.r.t. nuclear coordinates)
+ | ``--ohess <level>`` : do both ``--opt`` and ``--hess`` with one option (again, with optional specification of the optimization level)
  | ``--alpb <solvent>`` : use the ALPB solvation model with the specified solvent (e.g., ``toluene``)
 
 Please note that xTB does not overwrite your initial input structure after optimization, but rather writes the optimized coordinates to the ``xtbopt.coord`` file. Use this ﬁle for the
 subsequent Hessian calculation and **not** your original input file, as this would lead to imaginary frequencies (negative wave numbers).
 
-.. important:: Do **not** use structures with two or more imaginary frequencies for any thermochemical evaluations. Recall from QC1 (PES lecture) that local minima **must** always have zero imaginary frequencies, whereas only a single imaginary frequency is allowed for transition states.
+.. important:: Do **not** use structures with two or more imaginary frequencies for any thermochemical evaluations! Recall from QC1 (PES lecture) that local minima **must** always have zero imaginary frequencies, whereas only one single imaginary frequency is allowed (and actually required) for transition states.
 
 If you encounter any unwanted imaginary frequencies, try optimizing the ``xtbhess.coord`` file, 
 which is a structure that is dislocated along all significant imaginary eigenmodes. 

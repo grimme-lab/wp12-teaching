@@ -9,72 +9,86 @@ Exercises
 Introduction
 ------------
 
-Some general remarks at the beginning: There will be an accompanying `GitHub Repository <https://github.com/grimme-lab/wp12-teaching>`_ to this course.
-In this Repository, you can find all provided input files and geometries necessary to work on the tasks.
-In addition, you can also find the manuals of the program packages TURBOMOLE8.0 and COSMOtherm.
+Some general remarks at the beginning: There is an accompanying `GitHub Repository <https://github.com/grimme-lab/wp12-teaching>`_ to this course.
+You can find all provided input files and thus geometries necessary to work on the tasks in this repository.
+In addition, we also uploaded some of the manuals of program packages used in this part of the course.
 The `PSI4 documentation <https://psicode.org/psi4manual/master/index.html>`_ is available online.
 
 Most of the other scripts give some general options if started via 
 
 .. code-block:: none
 
-   [program] -h
+   [program/script] -h
 
 .. important::
 
-   Use only your ``/tmp1/$USER/`` folder for all calculations!
+   Use only your ``/tmp1/$USER/`` folder to perform any calculations!
 
 .. important::
 
-	When all exercises are completed, you must fill in the results.csv file with the calculated raw data. You can easily do this using your preferred spreadsheet editor. Then, send this file to your tutors.
-	Please provide data in the units specified in the file (6 decimal places for Hartree values and up to 4 decimal places for kcal/mol values). Do not change the structure of the file, and include only the raw data used or obtained from the calculations.
-	Once this data has been reviewed by the tutors and no errors are found, you may begin the post-processing calculations and prepare the practice report.
+   To make sure you are using correct values to compute any final results, we will verify each of your calculated outputs
+   **before** you start writing the protocol. To do so, you will have to fill out the :download:`results.csv <../exercises/results.csv>` file
+   and send it to one of your tutors for verification.
+   
+   
+	We will **not** accept protocol submission without prior verification of the results!  
+   
+
+   Please provide all data in units as specified in ``results.csv``. Use six decimal places for absolute energies in atomic units, 
+   four decimal places for values in kcal/mol, and do **not** change the structure of the file as this would hamper with our verification process.
 
 
-Noncovalent Interactions
+Partitioning Noncovalent Interactions
 ------------------------
-
-.. _Partitioning noncovalent interactions:
-
-Partitioning noncovalent interactions
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. _exercise-1:
 
 .. admonition:: Exercise 1
 
    Partition the interactions of three weakly bound dimers (namely the water dimer, the
-   argon dimer, and the uracil dimer) and identify the dominant binding motifs.
-   Investigate the three-body effect in the case of two isomers of argon trimers.
+   argon dimer, and the uracil dimer) and identify dominant binding motifs.
+   Investigate three-body dispersion at the example of two argon trimer configurations.
 
 **Approach**
 
-We will use the symmetry-adapted perturbation theory (SAPT) implemented in ``PSI4``. For your ease, we will provide the equilibrium geometries in ``XMol`` and ``TM`` formats. Choose the appropriate one.
-The SAPT ansatz gives the ﬁrst and second-order complexation energies based on either an HF or a DFT monomer approximation:
+We will use symmetry-adapted perturbation theory (SAPT) as implemented in ``PSI4``. For your ease,
+we provide equilibrium geometries in the ``xyz`` (``XMol``) and ``TM`` formats.
+Choose the appropriate file format as determined by the software package used. 
+
+The SAPT ansatz yields the ﬁrst and second-order complexation energies based on either a HF or a DFT monomer approximation:
 
 .. math::
 
    E_{\mathrm{SAPT}} = E_{\mathrm{pol}} + E_{\mathrm{exch}} + E_{\mathrm{ind,resp}} + E_{\mathrm{exch-ind,resp}} + E_{\mathrm{disp}} + E_{\mathrm{exch-disp}}
 
-1. Calculate each system's HF-SAPT/aug-cc-pVQZ and AC-PBE0-SAPT/aug-cc-pVQZ (second order) binding energy at the equilibrium distance. 
-   For the DFT calculation, you need to asymptotically correct the PBE0 functional shifting the ionization potential to a reference value. 
-   For the uracil dimer, you should use a smaller aug-cc-pVTZ basis. Discuss the problems that can arise by using a smaller basis.
-   Classify the diﬀerent binding situations by separating the ﬁrst and second-order energy contributions. 
-   Explain why the diﬀerences between the HF and DFT-based SAPT energies increase in the order argon, water, and uracil.
+1. Calculate binding energies for all dimers at equilibrium distance using the HF-SAPT/aug-cc-pVQZ and AC-PBE0-SAPT/aug-cc-pVQZ (second order) levels of theory. 
+   
+   For the DFT calculations, you need to asymptotically correct the PBE0 functional shifting the ionization potential to a reference value. 
+   For the uracil dimer, you should use a smaller aug-cc-pVTZ basis. Discuss the problems that can arise by using this smaller basis.
+
+   Further, classify the diﬀerent binding situations by separating the ﬁrst and second-order energy contributions. 
+   Explain why the diﬀerences between the HF and DFT-based SAPT energies increase in the order from argon to water and uracil.
 
    .. admonition:: Technical procedure
 
-      For the DFT-SAPT calculation, you need the difference between the experimental and calculated ionization energies of the monomers. You can find experimental ionization energies in the NIST database (for the uracil use the value of 9.53 eV). 
-      Modify the provided input ﬁles to match your system. Modify the HF input file to choose the appropriate SAPT method for the above equation. Start the program by invoking
+      By default, PSI4 uses the default name ``input.dat`` for input and ``output.dat`` for output files,
+      which can be changed via the commmand line input by invoking the program with specific options:
 
       .. code-block:: none
- 
-         psi4 [options]
+
+         psi4 [further options]
+      
+      If PSI4 returns an error message about insufficient memory for the calculation at hand, 
+      provide more memory via the keyword ``--memory xxGB``, with ``xx``  being the amount of memory in gigabytes, and try again.
+      
+      Modify the provided input ﬁles to be applicable to the desired systems, including the specific SAPT method you want to use.
   
    .. hint::
 
-      PSI4 uses input files to perform calculations. The default input file name is ``input.dat``. You can change this via command line options. PSI4 also uses an output file ``output.dat`` by default.
-      Additional outputs may still be found in the standard output of your system. If PSI4 returns an error message about insufficient memory, try to provide the sufficient amount of memory  to the calculation with the keyword ``--memory xxGB``. You can find further information about PSI4 and SAPT calculations in the `PSI 4 documentation <https://psicode.org/psi4manual/master/sapt.html>`_.
+      For the DFT-SAPT calculations, you need the difference between the experimental and calculated ionization energies of the corresponding monomers. 
+      You can find experimental ionization energies in the NIST database. Use a value of 9.53 eV for uracil herein. 
+
+      
 
 2. Calculate the HF-SAPT2/aug-cc-pVQZ potential energy surface for the argon dimer. Discuss the different first and second order contributions at the different distances
    and plot the total electrostatic, exchange, induction, and dispersion contributions as well as the total SAPT2 interaction energy with respect to the

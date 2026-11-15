@@ -9,7 +9,7 @@ Working With This Script
 2. Read each of the exercises completely before you start working, as technical hints may be given at the end of exercises.
 
 3. Any program may crash. Always check your outputs and ensure all calculations ran successfully, 
-   providing necessary information, as intended based on your given input.
+   providing all necessary information, as intended based on your given input.
 
 4. Always make sure to redirect the standard output of a program to an appropriate file by using the output operator ``>`` 
    upon calling the program (e.g., ``./program > output.txt``). Otherwise, you may loose important data, 
@@ -31,7 +31,30 @@ Further Reading
 
 If this is your first time working with Linux or quantum chemistry software, fear not; we still have you covered. You can find additional resources in our quantum chemistry II script and on eCampus:
 
-- eCampus: Module MCh WP12 Theoretical Methods for Condensed Matter :math:`\rightarrow` Introductory Course :math:`\rightarrow` Slides Introductory Course
-- `Working on Linux <https://qc2-teaching.readthedocs.io/en/latest/setup-linux.html>`_
-- `Introduction to Fortran <https://qc2-teaching.readthedocs.io/en/latest/prog-fortran.html>`_
-- `Software Recommendations <https://qc2-teaching.readthedocs.io/en/latest/apps-recommendations.html#software-recommendations>`_
+- **Introductory resources**
+
+  - eCampus: Module MCh WP12 Theoretical Methods for Condensed Matter :math:`\rightarrow` Introductory Course :math:`\rightarrow` Slides Introductory Course
+  - `Working on Linux <https://qc2-teaching.readthedocs.io/en/latest/setup-linux.html>`_
+  - `Introduction to Fortran <https://qc2-teaching.readthedocs.io/en/latest/prog-fortran.html>`_
+  - `Software Recommendations <https://qc2-teaching.readthedocs.io/en/latest/apps-recommendations.html#software-recommendations>`_
+
+- **DFT methods**
+
+  - Bursch et al. (2022), *Best-Practice DFT Protocols for Basic Molecular Computational Chemistry*. `10.1002/anie.202205735 <https://doi.org/10.1002/anie.202205735>`__
+  - Ryu et al. (2018), *Pitfalls in Computational Modeling of Chemical Reactions and How To Avoid Them*. `10.1021/acs.organomet.8b00456 <https://doi.org/10.1021/acs.organomet.8b00456>`__
+
+- **SAPT and dispersion**
+
+  - Patkowski (2020), *Recent developments in symmetry-adapted perturbation theory*. `10.1002/wcms.1452 <https://doi.org/10.1002/wcms.1452>`__
+  - Grimme et al. (2016), *Dispersion-Corrected Mean-Field Electronic Structure Methods*. `10.1021/acs.chemrev.5b00533 <https://doi.org/10.1021/acs.chemrev.5b00533>`__
+  - Xu, Alkan & Gordon (2020), *Many-Body Dispersion*. `10.1021/acs.chemrev.0c00216 <https://doi.org/10.1021/acs.chemrev.0c00216>`__
+
+- **Solvation**
+
+  - Klamt (2018), *The COSMO and COSMO-RS solvation models*. `10.1002/wcms.1338 <https://doi.org/10.1002/wcms.1338>`__
+  - Herbert (2021), *Dielectric continuum methods for quantum chemistry*. `10.1002/wcms.1519 <https://doi.org/10.1002/wcms.1519>`__
+
+- **Thermochemistry**
+
+  - Grimme et al. (2021), *Efficient Quantum Chemical Calculation of Structure Ensembles and Free Energies for Nonrigid Molecules*. `10.1021/acs.jpca.1c00971 <https://doi.org/10.1021/acs.jpca.1c00971>`__
+  - Pracht & Grimme (2021), *Calculation of absolute molecular entropies and heat capacities made simple*. `10.1039/D1SC00621E <https://doi.org/10.1039/D1SC00621E>`__
