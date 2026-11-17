@@ -60,8 +60,8 @@ exclude_patterns = []
 html_theme = 'sphinx_book_theme'
 html_title = project
 html_theme_options = {
-    "repository_url": "https://github.com/grimme-lab/wp12-teaching",
-    "repository_branch": "main",
+    "repository_url": "https://github.com/timchem1508/wp12-teaching",
+    "repository_branch": "WiSe2026/27_1",
     "path_to_docs": "doc",
     "use_edit_page_button": True,
     "use_download_button": False,
