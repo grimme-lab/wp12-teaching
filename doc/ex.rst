@@ -57,7 +57,7 @@ or alternatively via
 
    Please provide all data in units as specified in ``results.csv``. Use six
    decimal places for absolute energies in atomic units, four decimal places
-   for values in kcal/mol, and do **not** change the structure of the file as
+   for values in kcal\  mol\ :sup:`-1`, and do **not** change the structure of the file as
    this would hamper with our verification process.
 
 
@@ -262,7 +262,7 @@ investigated herein.
    calculations as described in the instructions below, or consult the TURBOMOLE
    manual for further guidance.
 
-The binding (or association) energy is generally defined as
+The binding (or association) energy in the supermolecular approach is generally defined as
 
 .. math::
    E_{\mathrm{bind}} = E^{\mathrm{AB}} - E^{\mathrm{A}} - E^{\mathrm{B}}\,,
@@ -296,6 +296,7 @@ extrapolation. Similarly, :math:`E_{\mathrm{corr}}^{(X_k)}` is the correlation e
 
 Use the following optimized exponents for your extrapolations:
 
+.. Optimized coefficients as taken from https://doi.org/10.1021/ct100396y
 +---------------------+----------------------+---------------------+----------------------+---------------------+
 |                     | :math:`\alpha_{2,3}` | :math:`\beta_{2,3}` | :math:`\alpha_{3,4}` | :math:`\beta_{3,4}` |
 +=====================+======================+=====================+======================+=====================+
@@ -351,81 +352,101 @@ Molecules in Solution
 
 .. admonition:: Exercise 3
 
-   Calculate the equilibrium association Gibbs free energy
+   Calculate the association (binding) Gibbs free energy
    :math:`\Delta G_{\mathrm{a}}` of a molecular tweezer with
-   tetracyanoquinone (TCNQ) in **toluene** at room temperature.
+   tetracyanoquinone (TCNQ) in toluene at room temperature.
 
 **Approach**
 
 The host-guest system is again treated in a supermolecular approach. The
-association Gibbs free energy :math:`\Delta G_{\mathrm{a}}` is given by
+association (binding)Gibbs free energy :math:`\Delta G_{\mathrm{a}}` is thus given by
 
 .. math::
 
-   \Delta G_{\mathrm{a}} = \Delta E + \Delta G_{\mathrm{mRRHO}}^{T} + \Delta \delta G_{\mathrm{solv}}^{T}(X)
+   \Delta G_{\mathrm{a}} = \Delta E + \Delta G_{\mathrm{mRRHO}}^{T} + \Delta \delta G_{\mathrm{solv}}^{T}\,,
 
 with the electronic gas phase association energy :math:`\Delta E`, a correction
-to free energies in the modified rigid rotor harmonic oscillator (mRRHO)
-approximation :math:`\Delta G_{\mathrm{mRRHO}}^{T}`, and a correction to the
-solvation Gibbs free energy :math:`\Delta \delta G_{\mathrm{solv}}^{T}(X)`.
-These contributions depend explicitly on the temperature and solvent.
+to obtain free energies using the modified rigid rotor harmonic oscillator (mRRHO) model
+:math:`\Delta G_{\mathrm{mRRHO}}^{T}`, and a solvation correction
+:math:`\Delta \delta G_{\mathrm{solv}}^{T}`.
+Both these contributions explicitly depend on the temperature and solvent used.
 
 .. hint::
+   
+   The experimental association Gibbs free energy of the host-guest complex in toluene at
+   room temperature was measured to be
+   :math:`\Delta G_{\mathrm{a}}^{(298\,\mathrm{K})} = -4.50` kcal\  mol\ :sup:`-1`.
 
-   | Experimental association Gibbs free energy:
-     :math:`\Delta G_{\mathrm{a}}^{(298\,\mathrm{K})} = -4.50` kcal\ |mult|\ mol\ :sup:`-1`.
-   | Calculated association Gibbs free energy for the lowest-energy complex
-     conformer at the level of theory used here:
-     :math:`\Delta G_{\mathrm{a}}^{(298\,\mathrm{K})} = -4.5337` kcal\ |mult|\ mol\ :sup:`-1`.
+1. Calculate the electronic energies of the host, guest, and resulting complex
+   at the PBE0/def2-TZVP level of theory with TURBOMOLE. Use the PBE0-D4/def2-TZVP
+   geometries provided in the repository as input structures, but **not** the
+   ``alternative_geometry.xyz`` file for the host-guest complex.
 
-1. Calculate the electronic energy contribution with the (two- and three-body
-   dispersion) corrected hybrid GGA density functional PBE0-D3\ :sup:`ATM`\ (BJ)
-   at the def2-TZVP single particle basis set.
+2. Calculate the corresponding D3\ :sup:`ATM`\ (BJ) dispersion energies **of the same structures**
+   via ``dftd3``. Also extract the three-body contribution from each output.
 
-   .. admonition:: Technical procedure
+   .. important::
 
-      PBE0-D4/def2-TZVP geometries are provided. Calculate a PBE0 single-point
-      energy with TURBOMOLE.
-      Calculate the D3\ :sup:`ATM`\ (BJ) contribution with the ``dftd3``
-      standalone program.
-      (Attention: ``cefine`` sets a dispersion correction by default. Make sure
-      that you don't double-count it.). Use the ``-h`` (help) option of
-      ``dftd3`` and ``cefine`` to figure out the desired options.
-      Unfortunately, due to the internal file reader specifications, the
-      ``dftd3`` program cannot read the coord file after the ``cefine``
-      program has been used. Therefore, calculate the D3 contribution before
-      using the ``cefine`` program.
+      ``cefine`` sets a specific dispersion correction by default, so make sure
+      to not double-count! Use the help sections (``-h``) of ``dftd3`` and
+      ``cefine`` to figure out the correct command-line input options. 
+      
+      Also, due to internal file reader specifications, you cannot calculate 
+      the dispersion contributions **after** having used ``cefine`` already. Hence,
+      use a "fresh" coord file in an isolated directory or always calculate the
+      dispersion contribution *before* preparing the TURBOMOLE calculation with  
+      ``cefine``.
 
-   Compare the fraction of the three-body term contributions to the total
-   dispersion energy corrections for all structures.
-   Compare to the argon trimer results from the
-   :ref:`Exercise 1.3 <exercise-1-3>`.
+.. _exercise-3-3:
 
-2. Calculate the vibrational contributions in the modified rigid rotor
-   harmonic oscillator (mRRHO) model at the semiempirical GFN2-xTB level.
-
-   .. admonition:: Technical procedure
-
-      First, re-optimize the PBE0-D4/def2-TZVP geometries at the GFN2-xTB
-      level in toluene, using the ``ALPB`` solvation model.
-      Use the ``extreme`` optimization level. Then calculate the second
-      derivatives and read the thermodynamic functions printout in the mRRHO
-      approximation of the GFN2-xTB program. Confirm that there are no
-      imaginary frequencies, which would indicate that the structure is not a
-      local minimum.
-      Further information is given in Section :ref:`GFN2-xTB`.
-
-3. Compute the solvent corrections with COSMO-RS.
+3. Reoptimize the given molecular structures of the host and guest, and complex
+   at the semiempirical GFN2-xTB level, including toluene implicit solvation as
+   treated with the ALPB (analytical linearized Poisson-Boltzmann) solvation model.
+   Use the resulting optimized geometries to calculate the thermostatistical
+   contributions to the association free energy :math:`\Delta G_{\mathrm{mRRHO}}^{T}`
+   with the modified rigid rotor harmonic oscillator (mRRHO) model.
 
    .. admonition:: Technical procedure
 
-      The COSMO-RS model can be used via TURBOMOLE and the ``cosmosolv_prak``
-      script (option ``-scf``).
-      Do not use the ``cosmosolv`` script. The input file ``~/.cosmothermrc``
-      has to be modified to match the correct solvent (see Section
-      :ref:`COSMOtherm`). Use the ``Gsolv+VWork(298.15 K)`` value from the
-      output.
+      Use the ``extreme`` optimization level for all reoptimizations.
 
-   Do the ``VWork(298.15 K)`` values differ among the three compounds? What
-   does ``VWork`` represent, and why is it important when calculating the
-   solvation Gibbs free energy?
+4. Compute the solvation energies of the host, guest, and final complex as computed with
+   the COSMO-RS (COnductor-like Screening MOdel for Real Solvents) model for toluene,
+   using the optimized geometries provided in the repository.
+
+   .. admonition:: Technical procedure
+
+      The ``cosmosolv`` (option ``-scf``) script initiates two single-point
+      calculations with TURBOMOLE, where one single-point calculation is
+      in gas-phase and the other one is in solution-phase. The difference
+      in computed energies yields the solvation energy of a species.
+      
+      Make sure that a correct ``.cosmothermrc`` file is present in your home
+      directory (see :ref:`COSMOtherm` section). Use the ``Gsolv+VWork(298.15 K)``
+      output as the value for the solvation energy.
+
+5. Combine all computed free energy contributions to obtain a final value for the
+   association free energy :math:`\Delta G_{\mathrm{a}}^{(298\,\mathrm{K})}` at
+   room temperature in toluene. Consider the following questions and critically
+   analyze your computed results:
+   
+   - Why do you think your computed :math:`\Delta G_{\mathrm{a}}^{(298\,\mathrm{K})}`
+     differs from the experimental value and could any potential source of error be
+     invesitagted computationally?
+   - Compare the calculated three-body dispersion correction of the
+     host-guest complex with the ones obtained for the argon trimers from
+     :ref:`Exercise 1.3 <exercise-1-3>`. How does the three-body dispersion
+     term contribute to the association free energy and what do you conclude from this for
+     the importance of this contribution in the context of non-covalent
+     interactions between extended molecular systems in general?
+   - Why is a re-optimization of the provided geometries necessary within
+     :ref:`Exercise 3.3 <exercise-3-3>` prior to obtaining thermostatistical contributions?
+   - Discuss the difference between the ``Gsolv(298.15 K)`` and ``Gsolv+VWork(298.15 K)``
+     solvation energy outputs of the ``cosmosolv`` script for the three computed species and
+     its significance for the computed association free energy.
+
+6. Another geometry for the host-guest complex, the ``alternative_geometry.xyz`` file, is also
+   provided in the repository and can be similarly employed in the steps described above to give
+   an association free energy of
+   :math:`\Delta G_{\mathrm{a}}^{(298\,\mathrm{K})} = -4.53` kcal\  \ mol\ :sup:`-1`. Comment on 
+   this result and discuss its implications on the reliability of the above workflow.

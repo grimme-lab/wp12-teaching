@@ -30,7 +30,7 @@ The following programs will be used:
    * - `TURBOMOLE 8.0 <https://manual.turbomole.org/v8.0/>`_
      - ``ridft``, ``ricc2``
    * - COSMOtherm 19
-     - ``cosmosolv_prak`` (script that calls COSMOtherm)
+     - ``cosmosolv`` (script that calls COSMOtherm)
    * - `xTB 6.7.1 <https://github.com/grimme-lab/xtb>`_
      - ``xtb``
    * - `DFTD3 <https://www.chemie.uni-bonn.de/grimme/de/software/dft-d3/get_dft-d3>`_
@@ -74,9 +74,14 @@ The ``cosmosolv`` script needs a ``.cosmothermrc`` ﬁle in your home directory,
 .. literalinclude:: ../config/.cosmothermrc
    :linenos:
 
-Note the reference to the ``toluene.cosmo`` file in line 3, specifying solvation with toluene as needed for :ref:`Exercise 3 <exercise-3>`.
+Note the reference to the ``acetonitrile.cosmo`` file in line 3, specifying solvation with acetonitrile.
 
-.. hint:: This is a general input file for the COSMOtherm program. ``cosmosolv`` uses this file as an input for your calculation. If you are interested, you can find further information about COSMOtherm input in the :download:`COSMOtherm manual <../manuals/man_COSMOtherm.pdf>`.
+.. hint::
+
+   This is a general input file for the COSMOtherm program. ``cosmosolv`` uses a file similar to
+   this one as an input for your calculations in :ref:`Exercise 3 <exercise-3>`. If you are interested, you
+   can find further information about COSMOtherm input in the
+   :download:`COSMOtherm manual <../manuals/man_COSMOtherm.pdf>`.
 
 xTB, TURBOMOLE, and DFTD3
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -120,7 +125,7 @@ Specific Usage Instructions
 .. _GFN2-xTB:
 
 GFN2-xTB
-~~~~~~~
+~~~~~~~~
 
 A ``GFN2-xTB`` calculation can be initiated via
 

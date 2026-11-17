@@ -21,98 +21,108 @@ Report
 
    Please provide all data in units as specified in ``results.csv``. Use six
    decimal places for absolute energies in atomic units, four decimal places
-   for values in kcal/mol, and do **not** change the structure of the file as
+   for values in kcal\  mol\ :sup:`-1`, and do **not** change the structure of the file as
    this would hamper with our verification process.
 
-Email only the completed ``results.csv`` to one of your tutors for this
-initial check. Also, allow enough time for verification and any corrections before
-submitting your report **well before** the final submission deadline as communicated
-via eCampus/email.
+Email only the **complete** (not a partially filled) ``results.csv`` file to one of your tutors for this
+initial check. Also, allow enough time for verification and any corrections on your end
+before submitting your report **well before** the final submission deadline as
+communicated via eCampus/email. 
+
+We are not responsible to  "last-minute-correct" ``results.csv``
+submissions and thus your calculations the day before the general protocol submission
+deadline!
+
+.. important::
+
+   After having validated your results, read the following instructions carefully
+   before starting to write your final report for the Grimme part to avoid lengthy
+   revisions later on! Feel free to ask your tutors for clarification if needed.
 
 General Requirements
 --------------------
 
-The report is also an exercise in scientific writing, specificallyin theoretical chemistry.
-Write in complete English sentences, use scientific terminology,
-and cite the methods, programs, and published work you use.
+The report is also an exercise in scientific writing, specifically in theoretical chemistry:
+
+*Write in complete English sentences, use scientific terminology,
+and cite the methods, programs, and published work you use.*
 
 Organize the report by exercise and answer **every question in the exercise
 script**. Within each exercise, describe the methods and relevant equations,
-present the data, and then discuss the results. The discussion is the
-most important part of your report!
+present the data, and then discuss the results. Remember, the discussion
+and interpretation of your results is the most important part of your report!
 
 Introduce every symbol and abbreviation at first use, including those used in
 equations, and provide units for all reported quantities. For derived quantities and values,
-clearly state how they were calculated. Use consistent notation throughout.
+clearly state how they were calculated (e.g., by providing relevant equations and/or references), 
+and use consistent notation throughout.
 
 Computational Details
 ---------------------
 
-Provide the following information where applicable:
+Provide the following information to allow for reproducibility and reasonable
+interpretation of your findings, especially for key results that are method-dependent:
 
-- **System and geometry.** Mention if you reoptimized geometries.
-- **Type of calculation.** Specify whether you performed a single-point
-  calculation, geometry optimization, frequency calculation, distance scan,
-  or a separate calculation of an energy contribution or correction.
-- **Program and version.** Name each program and give its version, including
-  any program used to compute a separate correction.
+- **System and geometry.** Mention if you have reoptimized geometries or used additional
+  structures *not* taken from the Github repository (**only** use the provided
+  geometries from Github to avoid errors with ``results.csv`` validation).
+- **Type of calculation.** *Briefly* specify each step of your applied workflow,
+  including single-point calculation(s), geometry optimization(s), frequency calculation(s),
+  PES scan(s), or any other calculation(s) relevant to reproduce any separate contribution(s)
+  used to obtain your final values.
+- **Program and version.** Name each program and mention the employed version number.
 - **Method.** State the specific electronic structure method, such as
-  Hartree–Fock, MP2, or CCSD(T). For DFT, name the concrete density functional
-  approximation. For SAPT, state the SAPT level and the method used for the monomers
-  calculations.
-- **Basis set.** Name the basis set used with each method.
+  Hartree–Fock, MP2, or CCSD(T). For DFT, always name the concrete density functional
+  approximation. For SAPT, state the SAPT level and the method used for to compute the
+  monomers.
+- **Basis set.** Name the basis set used in combination with each of the methods.
 - **Additional Corrections.** Specify the use of a dispersion correction (including
-  the employed damping scheme), and whether a three-body contribution was included.
-  Identify thermochemical corrections or considerations of solvation effects where relevant.
+  the employed damping scheme), and whether a three-body contribution was included in
+  case the method does not already include it by default. Mention thermochemical
+  corrections or the inclusion of solvation effects where applicable.
 
-Report methodological choices that matter for understanding the results and
-possible sources of error. State shared details once and make clear which
-calculations they apply to, without overly emphasizing technical details
-with minor importance for this practical course.
+*Key takeaways*: Report methodological choices and settings that matter for
+understanding the results and possible sources of errors. State shared computational
+details once and make clear which calculations they apply to, without overly
+emphasizing technical details with minor importance for this practical course.
 
 Results and Discussion
 ----------------------
 
-Describe **and** explain your results. Support your answers with specific
-values or trends. For each comparison, identify the quantities, systems,
-methods, or basis sets being compared and quantify the relevant differences.
-Use the underlying theory to explain why a method gives a particular result,
-why agreement may be good, and where deviations may come from. If several
-methodological choices change together, state what the comparison can
-establish.
+Briefly describe **and** explain your results. Support your answers with specific
+values or trends observed. Use the underlying theory to explain why a method gives
+a particular result, and where deviations may originate from.
 
 Check what each literature or experimental value represents before using it
-as a reference, while distinguishing electronic energy differences (:math:`\Delta E`),
+as a reference for your calculated values (i.e., compare "apples to apples"), while
+distinguishing electronic energy differences (:math:`\Delta E`),
 enthalpy differences (:math:`\Delta H`), and Gibbs free energy differences
-(:math:`\Delta G`). Check whether the reported quantities and conditions
-permit a direct comparison and explain possible limitations.
+(:math:`\Delta G`) throughout.
 
 Be mindful of any “chemical accuracy” statements and prevent overclaims
-in this report by critically assessing all results. State the actual
-deviation in the context of the relevant energy scale of the problem at
-hand. A deviation below 1 kcal/mol does not by itself establish that a
-method describes an interaction or trend well!
+in this report by critically assessing all results. Hence, comment on deviations
+in the context of the relevant energy scale of the problem at hand. E.g., deviations
+below 1 kcal\  mol\ :sup:`-1` do not by itself establish that a method describes an interaction
+or trend consistently well for a broad range of molecular systems.
 
 Figures, Tables, and Numerical Data
 -----------------------------------
 
-- Include all plots requested in the Exercises. Use plots to show trends and
-  compact tables to compare values.
+Include all plots requested in the Exercises. Plots and compact tables can
+be used to visualize or highlight certain trends, but are only effective, for instance,
+if captions describe the contents clearly and plot axis limits are chosen appropriately to
+not cutoff or overly compress important features.
 
-- Choose axis limits such that they include key features to allow for a
-  practical discussion without cutting off or compressing important features.
+Use a consistent numbering scheme for figures, tables, and schemes and make all captions
+self-contained. When comparing levels of theory, make clear which level of theory was
+used to obtain what data.
 
-- Number and caption every figure, table, and scheme. Introduce each by
-  number in the text and discuss the observation it supports. Make captions
-  understandable on their own. Label plot axes and use a legend or direct
-  labels to identify individual curves. When comparing levels of theory, make
-  clear which level was used to obtain what data.
+Different from your input into ``results.csv``, report final energy (differences) up to
+**only two** decimal places when provided in units of kcal\  mol\ :sup:`-1`. Only the dispersion energies
+from Exercise 1.3 require reporting with more decimal places.
 
-- As in ``results.csv``, report absolute energies in Hartree to six
-  decimal places and energies in kcal/mol to four decimal places.
-
-- Place extensive (raw) data tables and complete numerical series needed to
-  document the results in the appendix. Only refer to them within the main text.
+Do **not** include your (raw) data in the protocol and move large tables into the appendix
+if provided at all.
 
 Citations and Bibliography
 --------------------------
@@ -121,19 +131,16 @@ Cite all methods and programs used throughout, following their recommended
 citations where available. Evidently, also cite literature claims, reference
 values, and reproduced or adapted material at the point of use. If you use
 data from literature sources, make clear which results you obtained yourself.
-
-Check that every cited source actually supports the claim or contains the
-value or data cited. If you derive a reference value from published data,
-state how/where you obtained it (e.g., provide a table or section number if
-it could help locate the values). Include a complete, consistently formatted
-bibliography.
+Include a complete, consistently formatted bibliography.
 
 Scope and Acceptance
 --------------------
 
 Separate theory sections and general technical explanations of methods such
-as HF or DFT are not required. Introduce the equations used to obtain the results
-and provide any background needed for interpretation of the results.
+as HF or DFT are **not** required. Only briefly introduce the equations used
+to obtain your results and provide any background needed for interpretation.
 
-To get accepted, your report must contain answers to every exercise question, discuss
-the results properly, and include the essential computational details and citations.
+To complete your report, it must contain answers to every exercise question, discuss
+the results properly, and include the essential computational details and citations. 
+Please ensure all these criteria are met. We typically only allow one round of extensive
+revisions prior to acceptance of the reports.

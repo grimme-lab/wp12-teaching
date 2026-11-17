@@ -38,24 +38,24 @@ If this is your first time working with Linux or quantum chemistry software, fea
   - `Introduction to Fortran <https://qc2-teaching.readthedocs.io/en/latest/prog-fortran.html>`_
   - `Software Recommendations <https://qc2-teaching.readthedocs.io/en/latest/apps-recommendations.html#software-recommendations>`_
 
-- **DFT methods**
+- **DFT Methods**
 
   - Bursch et al. (2022), *Best-Practice DFT Protocols for Basic Molecular Computational Chemistry*. `10.1002/anie.202205735 <https://doi.org/10.1002/anie.202205735>`__
   - Ryu et al. (2018), *Pitfalls in Computational Modeling of Chemical Reactions and How To Avoid Them*. `10.1021/acs.organomet.8b00456 <https://doi.org/10.1021/acs.organomet.8b00456>`__
-
-- **SAPT and dispersion**
-
-  - Patkowski (2020), *Recent developments in symmetry-adapted perturbation theory*. `10.1002/wcms.1452 <https://doi.org/10.1002/wcms.1452>`__
-  - Grimme et al. (2016), *Dispersion-Corrected Mean-Field Electronic Structure Methods*. `10.1021/acs.chemrev.5b00533 <https://doi.org/10.1021/acs.chemrev.5b00533>`__
-  - Xu, Alkan & Gordon (2020), *Many-Body Dispersion*. `10.1021/acs.chemrev.0c00216 <https://doi.org/10.1021/acs.chemrev.0c00216>`__
-
-- **Solvation**
-
-  - Klamt (2018), *The COSMO and COSMO-RS solvation models*. `10.1002/wcms.1338 <https://doi.org/10.1002/wcms.1338>`__
-  - Herbert (2021), *Dielectric continuum methods for quantum chemistry*. `10.1002/wcms.1519 <https://doi.org/10.1002/wcms.1519>`__
 
 - **Thermochemistry**
 
   - Grimme et al. (2021), *Efficient Quantum Chemical Calculation of Structure Ensembles and Free Energies for Nonrigid Molecules*. `10.1021/acs.jpca.1c00971 <https://doi.org/10.1021/acs.jpca.1c00971>`__
   - Pracht & Grimme (2021), *Calculation of absolute molecular entropies and heat capacities made simple*. `10.1039/D1SC00621E <https://doi.org/10.1039/D1SC00621E>`__
+
+- **Solvation**
+
+  - Klamt (2018), *The COSMO and COSMO-RS solvation models*. `10.1002/wcms.1338 <https://doi.org/10.1002/wcms.1338>`__
+  - Herbert (2021), *Dielectric continuum methods for quantum chemistry*. `10.1002/wcms.1519 <https://doi.org/10.1002/wcms.1519>`__
   - Hellweg & Eckert (2017), *Brick by brick computation of the Gibbs free energy of reaction in solution using quantum chemistry and COSMO-RS*. `10.1002/aic.15716 <https://doi.org/10.1002/aic.15716>`__
+
+- **SAPT and Dispersion**
+
+  - Patkowski (2020), *Recent developments in symmetry-adapted perturbation theory*. `10.1002/wcms.1452 <https://doi.org/10.1002/wcms.1452>`__
+  - Grimme et al. (2016), *Dispersion-Corrected Mean-Field Electronic Structure Methods*. `10.1021/acs.chemrev.5b00533 <https://doi.org/10.1021/acs.chemrev.5b00533>`__
+  - Xu, Alkan & Gordon (2020), *Many-Body Dispersion*. `10.1021/acs.chemrev.0c00216 <https://doi.org/10.1021/acs.chemrev.0c00216>`__
