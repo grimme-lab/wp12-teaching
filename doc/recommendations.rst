@@ -58,3 +58,4 @@ If this is your first time working with Linux or quantum chemistry software, fea
 
   - Grimme et al. (2021), *Efficient Quantum Chemical Calculation of Structure Ensembles and Free Energies for Nonrigid Molecules*. `10.1021/acs.jpca.1c00971 <https://doi.org/10.1021/acs.jpca.1c00971>`__
   - Pracht & Grimme (2021), *Calculation of absolute molecular entropies and heat capacities made simple*. `10.1039/D1SC00621E <https://doi.org/10.1039/D1SC00621E>`__
+  - Hellweg & Eckert (2017), *Brick by brick computation of the Gibbs free energy of reaction in solution using quantum chemistry and COSMO-RS*. `10.1002/aic.15716 <https://doi.org/10.1002/aic.15716>`__
