@@ -254,11 +254,11 @@ investigated herein.
 
 .. admonition:: Technical procedure
 
-   TURBOMOLE needs the input generator ``cefine_current`` to prepare any
-   calculations. Run ``cefine_current -h`` to determine which options you
+   TURBOMOLE needs the input generator ``cefine`` to prepare any
+   calculations. Run ``cefine -h`` to determine which options you
    have to choose for your intended calculation. Please note that you **must**
    add ``-sym c1`` to **all** cefine calls to avoid any symmetry-related problems.
-   After preparing the input files with ``cefine_current``, proceed with the
+   After preparing the input files with ``cefine``, proceed with the
    calculations as described in the instructions below, or consult the TURBOMOLE
    manual for further guidance.
 
@@ -313,7 +313,7 @@ Use the following optimized exponents for your extrapolations:
 
    .. admonition:: Technical procedure
 
-      First, set up your calculation via ``cefine_current``. Then, to obtain a CCSD(T) energy,
+      First, set up your calculation via ``cefine``. Then, to obtain a CCSD(T) energy,
       perform a canonical Hartree-Fock calculation with ``ridft``. Last, the correlation energy
       can be obtained by employing TURBOMOLE's ``ccsdf12``.
 
@@ -323,7 +323,7 @@ Use the following optimized exponents for your extrapolations:
    .. admonition:: Technical procedure
 
       Similar to the CCSD(T) workflow, you need to start with a canonical Hartree-Fock
-      calculation with ``ridft`` after input preparations with ``cefine_current``.
+      calculation with ``ridft`` after input preparations with ``cefine``.
       For MP2, this is followed by a computation of the correlation energy with ``ricc2``.
 
 3. Use the MP2 energies to extrapolate the CCSD(T) binding energies to the complete
