@@ -9,7 +9,7 @@ Working With This Script
 2. Read each of the exercises completely before you start working, as technical hints may be given at the end of exercises.
 
 3. Any program may crash. Always check your outputs and ensure all calculations ran successfully, 
-   providing all necessary information, as intended based on your given input.
+   providing all necessary information as intended based on your given input.
 
 4. Always make sure to redirect the standard output of a program to an appropriate file by using the output operator ``>`` 
    upon calling the program (e.g., ``./program > output.txt``). Otherwise, you may lose important data, 
@@ -21,10 +21,9 @@ Troubleshooting
 Any program may cause a variety of problems. It is thus helpful to follow a few simple guidelines to understand and resolve any issues:
 
 - *Crap in, crap out...* :math:`\rightarrow` Always check your input (input geometries, file formats, input file, chosen keywords, charge, multiplicity, etc.) before you start a calculation.
-- If a calculation stops abnormally, check the output (*e.g.* orca.out, job.last, etc.) and error files first.
-- Read your output and error files carefully. Pay special attention to the last lines of failed output files for error messages that hint at what may have caused the problem (e.g., an incorrect keyword specification, or a missing input file).
+- If a calculation stops abnormally, check the output (*e.g.* orca.out, job.last, etc.) and error files first. Pay special attention to the last lines of failed output files for error messages that hint at what may have caused the problem (e.g., an incorrect keyword specification, or a missing input file).
 - Once you have identified the problem, check the program manual for additional options and troubleshooting, and fix the problem by restarting the calculation with corrected input(s).
-- If your calculations repeatedly stop abnormally and you have exhausted all other possibilities (e.g., input options), prepare a concise description of the problem and contact one of your tutors. Make sure to provide the input, output and any error files or messages, as appropriate.
+- Only, if your calculations repeatedly stop abnormally and you have exhausted all other possibilities (e.g., input options), prepare a concise description of the problem and contact one of your tutors. Make sure to provide the input, output and any error files or messages, as appropriate.
 
 Further Reading
 ---------------

@@ -26,7 +26,7 @@ Report
 
 Email only the **complete** (not a partially filled) ``results.csv`` file to one of your tutors for this
 initial check. Also, allow enough time for verification and any corrections on your end
-before submitting your report **well before** the final submission deadline as
+before then submitting your report **well before** the final submission deadline as
 communicated via eCampus/email. 
 
 We are not responsible for making last-minute corrections to ``results.csv``
@@ -118,10 +118,12 @@ Use a consistent numbering scheme for figures, tables, and schemes and make all 
 self-contained. When comparing levels of theory, make clear which level of theory was
 used to obtain what data.
 
-Unlike in ``results.csv``, report final energies and energy differences to
-**at most two** decimal places when provided in units of kcal\  mol\ :sup:`-1`. Only the
-dispersion energies from Exercise 1.3 require reporting with more decimal places as
-is reasonable.
+.. important::
+
+    Unlike in ``results.csv``, report final energies and energy differences to
+    **at most two** decimal places when provided in units of kcal\  mol\ :sup:`-1`. Only some
+    dispersion energies (e.g., from :ref:`Exercise 1.3 <exercise-1-3>`) require reporting with
+    more decimal places for reasonable interpretation within this course.
 
 Do **not** include your (raw) data in the report and move large tables into the appendix
 if provided at all.

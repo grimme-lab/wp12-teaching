@@ -48,11 +48,13 @@ General Setup
 
 The ``.bashrc`` file is a conﬁguration ﬁle loaded whenever a new terminal is opened (`Ubuntu wiki <https://wiki.ubuntuusers.de/Bash/bashrc/>`_).
 To be able to use a program, the system needs to know where to find it. Instead of using an absolute path or navigating into a program directory every time,
-you can simply add the location where the executable resides to your ``PATH`` environment variable. Note that the ``.bashrc`` is always located in the ``/home/$USER/`` directory. 
-In our case, the ``.bashrc`` covers the main setup of the PSI4 and COSMO-RS software as well as the configuration of thread
+you can simply add the location where the executable resides to your ``PATH`` environment variable.
+
+Note that the ``.bashrc`` is always located in the ``/home/$USER/`` directory. 
+In our case, the ``.bashrc`` covers the main setup of the PSI4, COSMOtherm, TURBOMOLE software packages as well as the configuration of thread
 usage and memory limits such that the programs run with a fixed number of CPU threads and enough stack space to avoid potential crashes. 
-Additionally, PSI4 requires activation of a conda environment.
-Your ``.bashrc`` should look like the following. It can also be found in the ``config`` directory of the WP12
+Additionally, PSI4 requires activation of a so-called conda environment.
+Your ``.bashrc`` should look like the following. This file can also be found in the ``config`` directory of the WP12
 `GitHub Repository <https://github.com/grimme-lab/wp12-teaching/tree/main/config>`_. Create this file in your home directory if it does not exist yet!
 
 ``.bashrc`` :
@@ -110,9 +112,9 @@ As you can see in the provided ``.bashrc`` file in the :ref:`General Setup <gene
    export OMP_STACKSIZE=1000m
 
 
-Similarly, Turbomole will utilize only one CPU core by default, which would result in overly long compute times for 
+Similarly, TURBOMOLE will utilize only one CPU core by default, which would result in overly long compute times for 
 the single-point calculations needed for :ref:`Exercise 3 <exercise-3>`. Hence, set the following environment
-variables before starting any TURBOMOLE calculations to allow for parallel execution:
+variables by putting them into your ``.bashrc`` before starting any TURBOMOLE calculations to allow for parallel execution:
 
 .. code-block:: none
 
@@ -131,12 +133,12 @@ A ``GFN2-xTB`` calculation can be initiated via
 
 .. code-block:: none
 
-   xtb --gfn 2 <coordinates_input> [options]  >  xtb.out
+   xtb --gfn 2 <coordinates_input> [further options]  >  xtb.out
 
-where ``<coordinates_input>`` is a valid ``coord`` ﬁle as used with TURBOMOLE or a file in XMol (``.xyz``) format, and ``[options]`` are additional command-line options:
+where ``<coordinates_input>`` is a valid ``coord`` ﬁle as used with TURBOMOLE or a file in XMol (``.xyz``) format, and ``[further options]`` are additional command-line options:
 
 
-For instance, in :ref:`Exercise 3 <exercise-3>`, you will have to reoptimize the geometry of a given molecule followed by a calculation of the geometric (nuclear) Hessian,
+For instance, in :ref:`Exercise 3.3 <exercise-3-3>`, you will have to reoptimize the geometry of a given molecule followed by a calculation of the geometric (nuclear) Hessian,
 which provides access to molecular vibrational information as used for correcting electronic energies to Gibbs free energies within the
 modified rigid-rotor harmonic-oscillator model (mRRHO, `Grimme, Chem. Eur. J. 2012, 18, 9955–9964 <https://doi.org/10.1002/chem.201200497>`_).
 
@@ -144,15 +146,17 @@ To obtain this information, additional command-line options may be specified:
  | ``--opt <level>`` : structure optimization (with optional specification of the optimization level, e.g., ``extreme``)
  | ``--hess`` : compute geometric Hessian (second derivatives w.r.t. nuclear coordinates)
  | ``--ohess <level>`` : do both ``--opt`` and ``--hess`` with one option (again, with optional specification of the optimization level)
- | ``--alpb <solvent>`` : use the ALPB solvation model with the specified solvent (e.g., ``toluene``)
+ | ``--alpb <solvent>`` : use the ALPB solvation model with a specified solvent (e.g., ``acetonitrile``; more solvents are listed in the `ALPB documentation <https://xtb-docs.readthedocs.io/en/latest/gbsa.html#parameterized-solvents>`_)
 
 Please note that xTB does not overwrite your initial input structure after optimization, but rather writes the optimized coordinates to the ``xtbopt.coord`` file. Use this ﬁle for the
-subsequent Hessian calculation and **not** your original input file, as this would lead to imaginary frequencies (negative wave numbers).
+subsequent Hessian calculation and **not** your original input file.
 
-.. important:: Do **not** use structures with two or more imaginary frequencies for any thermochemical evaluations! Recall from QC1 (PES lecture) that local minima **must** always have zero imaginary frequencies, whereas only one single imaginary frequency is allowed (and actually required) for transition states.
+..  , as this would lead to imaginary frequencies (negative wave numbers).
 
 If you encounter any unwanted imaginary frequencies, try optimizing the ``xtbhess.coord`` file, 
 which is a structure displaced along all significant imaginary eigenmodes. 
-Don't forget to validate the resulting optimized geometry with another Hessian calculation! 
+Then, don't forget to validate the resulting optimized geometry with another Hessian calculation! 
 
 For more details on xTB, refer to the official `xTB documentation <https://xtb-docs.readthedocs.io/en/latest/index.html>`_.
+
+.. important:: Do **not** use structures with two or more imaginary frequencies for any thermochemical evaluations! Recall from QC1 (PES lecture) that local minima **must** always have zero imaginary frequencies, whereas only one single imaginary frequency is allowed (and actually required) for transition states.

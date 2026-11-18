@@ -10,7 +10,7 @@ export PSI_SCRATCH=$PSIS
 # make modules available
 . ${BASH_ENV} > /dev/null
 
-# COSMO-RS
+# COSMO-RS (COSMOtherm)
 export PATH=/opt/COSMOlogic/COSMOthermX19/COSMOtherm/BIN-LINUX/:$PATH
 
 # xTB

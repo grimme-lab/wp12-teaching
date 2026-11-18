@@ -16,7 +16,7 @@ the tasks in this repository.
 In addition, we also uploaded some of the manuals of program packages used in
 this part of the course.
 The `PSI4 documentation <https://psicode.org/psi4manual/master/index.html>`_
-is available online.
+is only available online.
 
 Please note that most of the scripts and programs print a help message with available command-line
 input options if started via
@@ -82,15 +82,14 @@ We will use symmetry-adapted perturbation theory (SAPT) as implemented in
 (``XMol``) and ``TM`` formats. Choose the appropriate file format as determined
 by the software package used.
 
-We will use the symmetry-adapted perturbation theory (SAPT) implemented in ``PSI4``.
 The SAPT ansatz gives the ﬁrst and second-order contributions to the complexation energies based on either an HF or a DFT monomer approximation:
 
 .. math::
 
    E_{\mathrm{SAPT}} = E_{\mathrm{pol}} + E_{\mathrm{exch}} + E_{\mathrm{ind,resp}} + E_{\mathrm{exch-ind,resp}} + E_{\mathrm{disp}} + E_{\mathrm{exch-disp}}
 
-1. Find, to which variant of the SAPT the formula above corresponds, and then calculate each system's HF-SAPT/aug-cc-pVQZ and AC-PBE0-SAPT/aug-cc-pVQZ binding energies at the equilibrium distance. 
-   For the DFT calculation, you need to asymptotically correct the PBE0 functional shifting the ionization potential to a reference value. 
+1. Find out to which SAPT variant the provided formula above corresponds, and then calculate each system's HF-SAPT/aug-cc-pVQZ and AC-PBE0-SAPT/aug-cc-pVQZ binding energies at the equilibrium distance. 
+   For the DFT calculation, you need to asymptotically correct the PBE0 functional by shifting the ionization potential to a reference value. 
    For the uracil dimer, you should use a smaller aug-cc-pVTZ basis due to high computational costs. 
    
    - Classify the diﬀerent binding situations by separating the ﬁrst and second-order energy contributions. 
@@ -208,7 +207,7 @@ The SAPT ansatz gives the ﬁrst and second-order contributions to the complexat
              cd ..
          done
 
-      The calculated values can be obtained by running the
+      The calculated values can then be obtained by running the
       ``parse_output_scan_sapt2.py`` Python script.
 
 .. _exercise-1-3:
@@ -377,17 +376,19 @@ Both these contributions explicitly depend on the temperature and solvent used.
    room temperature was measured to be
    :math:`\Delta G_{\mathrm{a}}^{(298\,\mathrm{K})} = -4.50` kcal\  mol\ :sup:`-1`.
 
+.. _exercise-3-1:
+
 1. Calculate the electronic energies of the host, guest, and resulting complex
    at the PBE0/def2-TZVP level of theory with TURBOMOLE. Use the PBE0-D4/def2-TZVP (CPCM, toluene)
    geometries provided in the repository as input structures, but **not** the
    ``alternative_geometry.xyz`` file for the host-guest complex.
 
 2. Calculate the corresponding D3\ :sup:`ATM`\ (BJ) dispersion energies **of the same structures**
-   via ``dftd3``. Also extract the three-body contribution from each output.
+   from :ref:`Exercise 3.1 <exercise-3-1>` via ``dftd3``. Also extract the three-body contribution from each output.
 
    .. important::
 
-      ``cefine`` sets a specific dispersion correction by default, so make sure
+      Please note that ``cefine`` sets a specific dispersion correction by default, so make sure
       to not double-count! Use the help sections (``-h``) of ``dftd3`` and
       ``cefine`` to figure out the correct command-line input options. 
       
@@ -431,12 +432,12 @@ Both these contributions explicitly depend on the temperature and solvent used.
    analyze your computed results:
    
    - Why do you think your computed :math:`\Delta G_{\mathrm{a}}^{(298\,\mathrm{K})}`
-     differs from the experimental value and could any potential source of error be
+     differs from the experimental value and could any of the potential sources of error be
      investigated computationally?
    - Compare the calculated three-body dispersion correction of the
      host-guest complex with the ones obtained for the argon trimers from
      :ref:`Exercise 1.3 <exercise-1-3>`. How does the three-body dispersion
-     term contribute to the association Gibbs free energy and what do you conclude from this for
+     term contribute to the association Gibbs free energy herein and what do you conclude from this for
      the importance of this contribution in the context of non-covalent
      interactions between extended molecular systems in general?
    - Why is a re-optimization of the provided geometries necessary within
@@ -449,4 +450,5 @@ Both these contributions explicitly depend on the temperature and solvent used.
    provided in the repository and can be similarly employed in the steps described above to give
    an association Gibbs free energy of
    :math:`\Delta G_{\mathrm{a}}^{(298\,\mathrm{K})} = -4.53` kcal\  \ mol\ :sup:`-1`. Comment on 
-   this result and discuss its implications for the reliability of the above workflow.
+   this result and discuss its implications for the reliability of the above workflow 
+   and your calculations in particular.
