@@ -91,9 +91,11 @@ The SAPT ansatz gives the ﬁrst and second-order complexation energies based on
 
 1. Calculate each system's HF-SAPT/aug-cc-pVQZ and AC-PBE0-SAPT/aug-cc-pVQZ binding energies at the equilibrium distance. 
    For the DFT calculation, you need to asymptotically correct the PBE0 functional shifting the ionization potential to a reference value. 
-   For the uracil dimer, you should use a smaller aug-cc-pVTZ basis due to high computational costs. Discuss the problems that can arise by using a smaller basis.
-   Classify the diﬀerent binding situations by separating the ﬁrst and second-order energy contributions. 
-   Explain why the diﬀerences between the HF and DFT-based SAPT energies increase in the order argon, water, and uracil.
+   For the uracil dimer, you should use a smaller aug-cc-pVTZ basis due to high computational costs. 
+   
+   - Classify the diﬀerent binding situations by separating the ﬁrst and second-order energy contributions. 
+   - Discuss the problems that can arise by using a smaller basis set.
+   - Explain why the diﬀerences between the HF and DFT-based SAPT energies increase in the order argon, water, and uracil.
 
    .. admonition:: Technical procedure
 
