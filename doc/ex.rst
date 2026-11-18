@@ -82,21 +82,18 @@ We will use symmetry-adapted perturbation theory (SAPT) as implemented in
 (``XMol``) and ``TM`` formats. Choose the appropriate file format as determined
 by the software package used.
 
-The SAPT ansatz yields the first- and second-order complexation energies based
-on either an HF or a DFT monomer approximation:
+We will use the symmetry-adapted perturbation theory (SAPT) implemented in ``PSI4``.
+The SAPT ansatz gives the ﬁrst and second-order complexation energies based on either an HF or a DFT monomer approximation:
 
 .. math::
 
    E_{\mathrm{SAPT}} = E_{\mathrm{pol}} + E_{\mathrm{exch}} + E_{\mathrm{ind,resp}} + E_{\mathrm{exch-ind,resp}} + E_{\mathrm{disp}} + E_{\mathrm{exch-disp}}
 
-1. Calculate binding energies for all dimers at the given equilibrium distance using the
-   HF-SAPT/aug-cc-pVQZ and AC-PBE0-SAPT/aug-cc-pVQZ (second order) levels of
-   theory.
-
-   Further, classify the diﬀerent binding situations by separating the first-
-   and second-order energy contributions. Explain why the diﬀerences between
-   the HF and DFT-based SAPT energies increase going from argon to water
-   and uracil.
+1. Calculate each system's HF-SAPT/aug-cc-pVQZ and AC-PBE0-SAPT/aug-cc-pVQZ binding energies at the equilibrium distance. 
+   For the DFT calculation, you need to asymptotically correct the PBE0 functional shifting the ionization potential to a reference value. 
+   For the uracil dimer, you should use a smaller aug-cc-pVTZ basis due to high computational costs. Discuss the problems that can arise by using a smaller basis.
+   Classify the diﬀerent binding situations by separating the ﬁrst and second-order energy contributions. 
+   Explain why the diﬀerences between the HF and DFT-based SAPT energies increase in the order argon, water, and uracil.
 
    .. admonition:: Technical procedure
 
