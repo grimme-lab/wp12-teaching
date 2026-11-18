@@ -83,7 +83,7 @@ We will use symmetry-adapted perturbation theory (SAPT) as implemented in
 by the software package used.
 
 We will use the symmetry-adapted perturbation theory (SAPT) implemented in ``PSI4``.
-The SAPT ansatz gives the ﬁrst and second-order complexation energies based on either an HF or a DFT monomer approximation:
+The SAPT ansatz gives the ﬁrst and second-order contributions to the complexation energies based on either an HF or a DFT monomer approximation:
 
 .. math::
 
