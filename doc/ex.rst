@@ -379,7 +379,7 @@ Both these contributions explicitly depend on the temperature and solvent used.
    :math:`\Delta G_{\mathrm{a}}^{(298\,\mathrm{K})} = -4.50` kcal\  mol\ :sup:`-1`.
 
 1. Calculate the electronic energies of the host, guest, and resulting complex
-   at the PBE0/def2-TZVP level of theory with TURBOMOLE. Use the PBE0-D4/def2-TZVP
+   at the PBE0/def2-TZVP level of theory with TURBOMOLE. Use the PBE0-D4/def2-TZVP (CPCM, toluene)
    geometries provided in the repository as input structures, but **not** the
    ``alternative_geometry.xyz`` file for the host-guest complex.
 
@@ -417,7 +417,7 @@ Both these contributions explicitly depend on the temperature and solvent used.
 
    .. admonition:: Technical procedure
 
-      The ``cosmosolv`` (option ``-scf``) script initiates two single-point
+      The ``cosmosolv_prak`` (option ``-scf``) script initiates two single-point
       calculations with TURBOMOLE, where one single-point calculation is
       in the gas phase and the other in the solution phase. The difference
       in computed energies yields the solvation energy of a species.
@@ -443,7 +443,7 @@ Both these contributions explicitly depend on the temperature and solvent used.
    - Why is a re-optimization of the provided geometries necessary within
      :ref:`Exercise 3.3 <exercise-3-3>` prior to obtaining thermostatistical contributions?
    - Discuss the difference between the ``Gsolv(298.15 K)`` and ``Gsolv+VWork(298.15 K)``
-     solvation energy outputs of the ``cosmosolv`` script for the three computed species and
+     solvation energy outputs of the ``cosmosolv_prak`` script for the three computed species and
      its significance for the computed association free energy.
 
 6. Another geometry for the host-guest complex, the ``alternative_geometry.xyz`` file, is also

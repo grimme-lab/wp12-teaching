@@ -30,7 +30,7 @@ The following programs will be used:
    * - `TURBOMOLE 8.0 <https://manual.turbomole.org/v8.0/>`_
      - ``ridft``, ``ricc2``
    * - COSMOtherm 19
-     - ``cosmosolv`` (script that calls COSMOtherm)
+     - ``cosmosolv_prak`` (script that calls COSMOtherm)
    * - `xTB 6.7.1 <https://github.com/grimme-lab/xtb>`_
      - ``xtb``
    * - `DFTD3 <https://www.chemie.uni-bonn.de/grimme/de/software/dft-d3/get_dft-d3>`_
@@ -67,7 +67,7 @@ Your ``.bashrc`` should look like the following. It can also be found in the ``c
 COSMOtherm
 ~~~~~~~~~~
 
-The ``cosmosolv`` script needs a ``.cosmothermrc`` ﬁle in your home directory, in which the solvent parameters (among other settings) are speciﬁed for this project. 
+The ``cosmosolv_prak`` script needs a ``.cosmothermrc`` ﬁle in your home directory, in which the solvent parameters (among other settings) are speciﬁed for this project. 
 
 ``.cosmothermrc`` :
 
@@ -78,7 +78,7 @@ Note the reference to the ``acetonitrile.cosmo`` file in line 3, specifying solv
 
 .. hint::
 
-   This is a general input file for the COSMOtherm program. ``cosmosolv`` uses a file similar to
+   This is a general input file for the COSMOtherm program. ``cosmosolv_prak`` uses a file similar to
    this one as an input for your calculations in :ref:`Exercise 3 <exercise-3>`. If you are interested, you
    can find further information about COSMOtherm input in the
    :download:`COSMOtherm manual <../manuals/man_COSMOtherm.pdf>`.
@@ -133,7 +133,7 @@ A ``GFN2-xTB`` calculation can be initiated via
 
    xtb --gfn 2 <coordinates_input> [options]  >  xtb.out
 
-where ``<coordinates_input>`` is a valid ``coord`` ﬁle as used with TURBOMOLE or a file in typical ``.xyz`` format, and ``[options]`` are additional command-line options:
+where ``<coordinates_input>`` is a valid ``coord`` ﬁle as used with TURBOMOLE or a file in XMol (``.xyz``) format, and ``[options]`` are additional command-line options:
 
 
 For instance, in :ref:`Exercise 3 <exercise-3>`, you will have to reoptimize the geometry of a given molecule followed by a calculation of the geometric (nuclear) Hessian,
