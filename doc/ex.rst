@@ -89,7 +89,7 @@ The SAPT ansatz gives the ﬁrst and second-order contributions to the complexat
 
    E_{\mathrm{SAPT}} = E_{\mathrm{pol}} + E_{\mathrm{exch}} + E_{\mathrm{ind,resp}} + E_{\mathrm{exch-ind,resp}} + E_{\mathrm{disp}} + E_{\mathrm{exch-disp}}
 
-1. Calculate each system's HF-SAPT/aug-cc-pVQZ and AC-PBE0-SAPT/aug-cc-pVQZ binding energies at the equilibrium distance. 
+1. Find, to which variant of the SAPT the formula above corresponds, and then calculate each system's HF-SAPT/aug-cc-pVQZ and AC-PBE0-SAPT/aug-cc-pVQZ binding energies at the equilibrium distance. 
    For the DFT calculation, you need to asymptotically correct the PBE0 functional shifting the ionization potential to a reference value. 
    For the uracil dimer, you should use a smaller aug-cc-pVTZ basis due to high computational costs. 
    
