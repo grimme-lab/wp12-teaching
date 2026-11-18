@@ -6,7 +6,7 @@ Setup and QC Software
 =====================
 
 This section will give a short introduction and an overview of the general Linux setup,
-as well as Quantum Chemistry programs that will be used in this part of WP12.
+as well as quantum chemistry programs that will be used in this part of WP12.
 
 .. contents::
 
@@ -46,7 +46,7 @@ To use any of the programs/executables, take a look at the help output via ``exe
 General Setup
 ~~~~~~~~~~~~~
 
-The ``.bashrc`` file is a conﬁguration ﬁle loaded every time once a new terminal is opened (`Ubuntu wiki <https://wiki.ubuntuusers.de/Bash/bashrc/>`_.).
+The ``.bashrc`` file is a conﬁguration ﬁle loaded whenever a new terminal is opened (`Ubuntu wiki <https://wiki.ubuntuusers.de/Bash/bashrc/>`_).
 To be able to use a program, the system needs to know where to find it. Instead of using an absolute path or navigating into a program directory every time,
 you can simply add the location where the executable resides to your ``PATH`` environment variable. Note that the ``.bashrc`` is always located in the ``/home/$USER/`` directory. 
 In our case, the ``.bashrc`` covers the main setup of the PSI4 and COSMO-RS software as well as the configuration of thread
@@ -60,7 +60,7 @@ Your ``.bashrc`` should look like the following. It can also be found in the ``c
 .. literalinclude:: ../config/.bashrc
    :linenos:
 
-.. important:: Changes to the ``.bashrc`` do not apply to any open terminal sessions. After changing the ``.bashrc``, simply run ``source ~/.bashrc`` in your current terminal session or reopen a new terminal window for changes to take effect.
+.. important:: Changes to the ``.bashrc`` do not apply to any open terminal sessions. After changing the ``.bashrc``, simply run ``source ~/.bashrc`` in your current terminal session or open a new terminal window for changes to take effect.
 
 .. _COSMOtherm:
 
@@ -152,7 +152,7 @@ subsequent Hessian calculation and **not** your original input file, as this wou
 .. important:: Do **not** use structures with two or more imaginary frequencies for any thermochemical evaluations! Recall from QC1 (PES lecture) that local minima **must** always have zero imaginary frequencies, whereas only one single imaginary frequency is allowed (and actually required) for transition states.
 
 If you encounter any unwanted imaginary frequencies, try optimizing the ``xtbhess.coord`` file, 
-which is a structure that is dislocated along all significant imaginary eigenmodes. 
+which is a structure displaced along all significant imaginary eigenmodes. 
 Don't forget to validate the resulting optimized geometry with another Hessian calculation! 
 
 For more details on xTB, refer to the official `xTB documentation <https://xtb-docs.readthedocs.io/en/latest/index.html>`_.

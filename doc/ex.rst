@@ -9,8 +9,8 @@ Exercises
 Introduction
 ------------
 
-Some general remarks at the beginning: there is an accompanying
-`GitHub repository <https://github.com/grimme-lab/wp12-teaching>`_ to this course.
+Some general remarks at the beginning: there is a
+`GitHub repository <https://github.com/grimme-lab/wp12-teaching>`_ accompanying this course.
 You can find all provided input files and geometries necessary to work on
 the tasks in this repository.
 In addition, we also uploaded some of the manuals of program packages used in
@@ -41,7 +41,7 @@ or alternatively via
 
    To make sure you are using correct values to compute any final results, we
    will verify each of your calculated outputs **before** you start writing
-   the protocol. To do so, you will have to fill out the
+   the report. To do so, you will have to fill out the
    :download:`results.csv <../exercises/results.csv>` file and send it to one
    of your tutors for verification.
 
@@ -51,14 +51,14 @@ or alternatively via
                   padding: 12px 16px;
                   border-radius: 5px;
                   margin: 16px 0;">
-         We will <strong>not</strong> accept protocol submission
+         We will <strong>not</strong> accept report submission
          without prior verification of the results!
       </div>
 
    Please provide all data in units as specified in ``results.csv``. Use six
    decimal places for absolute energies in atomic units, four decimal places
-   for values in kcal\  mol\ :sup:`-1`, and do **not** change the structure of the file as
-   this would hamper with our verification process.
+   for values in kcal\  mol\ :sup:`-1`, and do **not** change the structure of
+   the file as this would hamper our verification process.
 
 
 
@@ -71,19 +71,19 @@ Partitioning Noncovalent Interactions
 .. admonition:: Exercise 1
 
    Partition the interactions of three weakly bound dimers (the water, argon,
-   and uracil dimer, respectively) and identify dominant binding
-   motifs. Investigate three-body dispersion at the example of two argon
-   trimer models.
+   and uracil dimers, respectively) and identify dominant binding
+   motifs. Investigate three-body dispersion using two argon
+   trimer models as examples.
 
 **Approach**
 
 We will use symmetry-adapted perturbation theory (SAPT) as implemented in
-``PSI4``. For your ease, we provide equilibrium geometries in the ``xyz``
+``PSI4``. For convenience, we provide equilibrium geometries in the ``xyz``
 (``XMol``) and ``TM`` formats. Choose the appropriate file format as determined
 by the software package used.
 
-The SAPT ansatz yields the ﬁrst and second-order complexation energies based
-on either a HF or a DFT monomer approximation:
+The SAPT ansatz yields the first- and second-order complexation energies based
+on either an HF or a DFT monomer approximation:
 
 .. math::
 
@@ -93,7 +93,7 @@ on either a HF or a DFT monomer approximation:
    HF-SAPT/aug-cc-pVQZ and AC-PBE0-SAPT/aug-cc-pVQZ (second order) levels of
    theory.
 
-   Further, classify the diﬀerent binding situations by separating the ﬁrst
+   Further, classify the diﬀerent binding situations by separating the first-
    and second-order energy contributions. Explain why the diﬀerences between
    the HF and DFT-based SAPT energies increase going from argon to water
    and uracil.
@@ -101,8 +101,8 @@ on either a HF or a DFT monomer approximation:
    .. admonition:: Technical procedure
 
       By default, PSI4 uses the default name ``input.dat`` for input and
-      ``output.dat`` for output files, which can be changed via the commmand
-      line input by invoking the program with specific options:
+      ``output.dat`` for output files, which can be changed via the command-line
+      input by invoking the program with specific options:
 
       .. code-block:: none
 
@@ -136,9 +136,9 @@ on either a HF or a DFT monomer approximation:
       of the Ar--Ar distance. Discuss the distance dependence of each first- and
       second-order contribution.
 
-   -  What characteristic distance dependence do you observe for the ﬁrst order exchange
-      :math:`E^{(1)}_{\mathrm{exch}}` and the second order dispersion 
-      :math:`E^{(2)}_{\mathrm{disp}}` contribution? Approximate both using a suitable
+   -  What characteristic distance dependence do you observe for the first-order exchange
+      :math:`E^{(1)}_{\mathrm{exch}}` and the second-order dispersion 
+      :math:`E^{(2)}_{\mathrm{disp}}` contributions? Approximate both using a suitable
       fit function to reproduce the respective short- and long-range behavior.
 
    .. admonition:: Technical procedure
@@ -210,7 +210,7 @@ on either a HF or a DFT monomer approximation:
          done
 
       The calculated values can be obtained by running the
-      ``parse_output_scan_sapt2.py`` python script.
+      ``parse_output_scan_sapt2.py`` Python script.
 
 .. _exercise-1-3:
 
@@ -269,9 +269,9 @@ The binding (or association) energy in the supermolecular approach is generally 
 
 with :math:`E^{\mathrm{A}}` and :math:`E^{\mathrm{B}}` being the electronic energies
 of the isolated fragments as calculated using fully relaxed fragment geometries, whereas
-:math:`E^{\mathrm{AB}}` is the electronic energy of optimized dimer.
+:math:`E^{\mathrm{AB}}` is the electronic energy of the optimized dimer.
 
-Recall from QC1 that the correlation energy of a post-Hartree-Fock method exhibits distinctively
+Recall from QC1 that the correlation energy of a post-Hartree-Fock method exhibits distinctly
 slower convergence behavior with respect to the basis set size compared to the Hartree-Fock energy 
 (SCF energy in the following) itself. Using different extrapolation schemes, one can make use of this observation to extrapolate
 correlation energies to the basis set limit.
@@ -297,6 +297,7 @@ extrapolation. Similarly, :math:`E_{\mathrm{corr}}^{(X_k)}` is the correlation e
 Use the following optimized exponents for your extrapolations:
 
 .. Optimized coefficients as taken from https://doi.org/10.1021/ct100396y
+
 +---------------------+----------------------+---------------------+----------------------+---------------------+
 |                     | :math:`\alpha_{2,3}` | :math:`\beta_{2,3}` | :math:`\alpha_{3,4}` | :math:`\beta_{3,4}` |
 +=====================+======================+=====================+======================+=====================+
@@ -318,7 +319,7 @@ Use the following optimized exponents for your extrapolations:
       perform a canonical Hartree-Fock calculation with ``ridft``. Last, the correlation energy
       can be obtained by employing TURBOMOLE's ``ccsdf12``.
 
-2. Calculate all required MP2 energies (M\ |crosso|\ ller-Plesset second order perturbation
+2. Calculate all required MP2 energies (second-order M\ |crosso|\ ller–Plesset perturbation
    theory) in the aug-cc-pV\ **T**\ Z and aug-cc-pV\ **Q**\ Z basis sets.
 
    .. admonition:: Technical procedure
@@ -337,8 +338,8 @@ Use the following optimized exponents for your extrapolations:
      *Dunning* basis sets a reasonable choice for this?
    
    - Compare your estimates for the CCSD(T)/CBS energies with corresponding values of
-     a plain Hartree-Fock calculations, the AC-PBE0-SAPT values from Exercise 1, and
-     values from literature. Explain your observations by discussing deviations between
+     plain Hartree–Fock calculations, the AC-PBE0-SAPT values from Exercise 1, and
+     values from the literature. Explain your observations by discussing deviations between
      methods and determine potential sources of error compared to the reference values.
      Again, consider what target properties are under study.
 
@@ -359,14 +360,14 @@ Molecules in Solution
 **Approach**
 
 The host-guest system is again treated in a supermolecular approach. The
-association (binding)Gibbs free energy :math:`\Delta G_{\mathrm{a}}` is thus given by
+association (binding) Gibbs free energy :math:`\Delta G_{\mathrm{a}}` is thus given by
 
 .. math::
 
    \Delta G_{\mathrm{a}} = \Delta E + \Delta G_{\mathrm{mRRHO}}^{T} + \Delta \delta G_{\mathrm{solv}}^{T}\,,
 
-with the electronic gas phase association energy :math:`\Delta E`, a correction
-to obtain free energies using the modified rigid rotor harmonic oscillator (mRRHO) model
+with the electronic gas-phase association energy :math:`\Delta E`, a correction
+to obtain free energies using the modified rigid-rotor harmonic-oscillator (mRRHO) model
 :math:`\Delta G_{\mathrm{mRRHO}}^{T}`, and a solvation correction
 :math:`\Delta \delta G_{\mathrm{solv}}^{T}`.
 Both these contributions explicitly depend on the temperature and solvent used.
@@ -399,12 +400,12 @@ Both these contributions explicitly depend on the temperature and solvent used.
 
 .. _exercise-3-3:
 
-3. Reoptimize the given molecular structures of the host and guest, and complex
-   at the semiempirical GFN2-xTB level, including toluene implicit solvation as
+3. Reoptimize the given molecular structures of the host, guest, and complex
+   at the semiempirical GFN2-xTB level, including implicit solvation in toluene as
    treated with the ALPB (analytical linearized Poisson-Boltzmann) solvation model.
    Use the resulting optimized geometries to calculate the thermostatistical
    contributions to the association free energy :math:`\Delta G_{\mathrm{mRRHO}}^{T}`
-   with the modified rigid rotor harmonic oscillator (mRRHO) model.
+   with the modified rigid-rotor harmonic-oscillator (mRRHO) model.
 
    .. admonition:: Technical procedure
 
@@ -418,7 +419,7 @@ Both these contributions explicitly depend on the temperature and solvent used.
 
       The ``cosmosolv`` (option ``-scf``) script initiates two single-point
       calculations with TURBOMOLE, where one single-point calculation is
-      in gas-phase and the other one is in solution-phase. The difference
+      in the gas phase and the other in the solution phase. The difference
       in computed energies yields the solvation energy of a species.
       
       Make sure that a correct ``.cosmothermrc`` file is present in your home
@@ -432,7 +433,7 @@ Both these contributions explicitly depend on the temperature and solvent used.
    
    - Why do you think your computed :math:`\Delta G_{\mathrm{a}}^{(298\,\mathrm{K})}`
      differs from the experimental value and could any potential source of error be
-     invesitagted computationally?
+     investigated computationally?
    - Compare the calculated three-body dispersion correction of the
      host-guest complex with the ones obtained for the argon trimers from
      :ref:`Exercise 1.3 <exercise-1-3>`. How does the three-body dispersion
@@ -449,4 +450,4 @@ Both these contributions explicitly depend on the temperature and solvent used.
    provided in the repository and can be similarly employed in the steps described above to give
    an association free energy of
    :math:`\Delta G_{\mathrm{a}}^{(298\,\mathrm{K})} = -4.53` kcal\  \ mol\ :sup:`-1`. Comment on 
-   this result and discuss its implications on the reliability of the above workflow.
+   this result and discuss its implications for the reliability of the above workflow.
