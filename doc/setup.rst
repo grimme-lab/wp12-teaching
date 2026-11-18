@@ -137,7 +137,7 @@ where ``<coordinates_input>`` is a valid ``coord`` ﬁle as used with TURBOMOLE 
 
 
 For instance, in :ref:`Exercise 3 <exercise-3>`, you will have to reoptimize the geometry of a given molecule followed by a calculation of the geometric (nuclear) Hessian,
-which provides access to molecular vibrational information as used for correcting electronic energies to free energies within the 
+which provides access to molecular vibrational information as used for correcting electronic energies to Gibbs free energies within the
 modified rigid-rotor harmonic-oscillator model (mRRHO, `Grimme, Chem. Eur. J. 2012, 18, 9955–9964 <https://doi.org/10.1002/chem.201200497>`_).
 
 To obtain this information, additional command-line options may be specified:

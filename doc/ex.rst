@@ -366,7 +366,7 @@ association (binding) Gibbs free energy :math:`\Delta G_{\mathrm{a}}` is thus gi
    \Delta G_{\mathrm{a}} = \Delta E + \Delta G_{\mathrm{mRRHO}}^{T} + \Delta \delta G_{\mathrm{solv}}^{T}\,,
 
 with the electronic gas-phase association energy :math:`\Delta E`, a correction
-to obtain free energies using the modified rigid-rotor harmonic-oscillator (mRRHO) model
+to obtain Gibbs free energies using the modified rigid-rotor harmonic-oscillator (mRRHO) model
 :math:`\Delta G_{\mathrm{mRRHO}}^{T}`, and a solvation correction
 :math:`\Delta \delta G_{\mathrm{solv}}^{T}`.
 Both these contributions explicitly depend on the temperature and solvent used.
@@ -403,7 +403,7 @@ Both these contributions explicitly depend on the temperature and solvent used.
    at the semiempirical GFN2-xTB level, including implicit solvation in toluene as
    treated with the ALPB (analytical linearized Poisson-Boltzmann) solvation model.
    Use the resulting optimized geometries to calculate the thermostatistical
-   contributions to the association free energy :math:`\Delta G_{\mathrm{mRRHO}}^{T}`
+   contributions to the association Gibbs free energy :math:`\Delta G_{\mathrm{mRRHO}}^{T}`
    with the modified rigid-rotor harmonic-oscillator (mRRHO) model.
 
    .. admonition:: Technical procedure
@@ -425,8 +425,8 @@ Both these contributions explicitly depend on the temperature and solvent used.
       directory (see :ref:`COSMOtherm` section). Use the ``Gsolv+VWork(298.15 K)``
       output as the value for the solvation energy.
 
-5. Combine all computed free energy contributions to obtain a final value for the
-   association free energy :math:`\Delta G_{\mathrm{a}}^{(298\,\mathrm{K})}` at
+5. Combine all computed Gibbs free energy contributions to obtain a final value for the
+   association Gibbs free energy :math:`\Delta G_{\mathrm{a}}^{(298\,\mathrm{K})}` at
    room temperature in toluene. Consider the following questions and critically
    analyze your computed results:
    
@@ -436,17 +436,17 @@ Both these contributions explicitly depend on the temperature and solvent used.
    - Compare the calculated three-body dispersion correction of the
      host-guest complex with the ones obtained for the argon trimers from
      :ref:`Exercise 1.3 <exercise-1-3>`. How does the three-body dispersion
-     term contribute to the association free energy and what do you conclude from this for
+     term contribute to the association Gibbs free energy and what do you conclude from this for
      the importance of this contribution in the context of non-covalent
      interactions between extended molecular systems in general?
    - Why is a re-optimization of the provided geometries necessary within
      :ref:`Exercise 3.3 <exercise-3-3>` prior to obtaining thermostatistical contributions?
    - Discuss the difference between the ``Gsolv(298.15 K)`` and ``Gsolv+VWork(298.15 K)``
      solvation energy outputs of the ``cosmosolv_prak`` script for the three computed species and
-     its significance for the computed association free energy.
+     its significance for the computed association Gibbs free energy.
 
 6. Another geometry for the host-guest complex, the ``alternative_geometry.xyz`` file, is also
    provided in the repository and can be similarly employed in the steps described above to give
-   an association free energy of
+   an association Gibbs free energy of
    :math:`\Delta G_{\mathrm{a}}^{(298\,\mathrm{K})} = -4.53` kcal\  \ mol\ :sup:`-1`. Comment on 
    this result and discuss its implications for the reliability of the above workflow.
