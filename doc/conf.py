@@ -22,7 +22,7 @@ copyright = '2022, Grimme group'
 author = 'Grimme group'
 
 # The full version, including alpha/beta/rc tags
-release = 'WS 22/23'
+release = 'WS 26/27'
 
 
 # -- General configuration ---------------------------------------------------

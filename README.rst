@@ -1,7 +1,7 @@
 Resources for Theoretical Methods for Condensed Matter
 ==================================
 
-This project contains the resources used for teaching the course "Theroretical Methods for Condensed Matter" (WP12) at the university of Bonn.
+This project contains the resources used for teaching the course "Theoretical Methods for Condensed Matter" (WP12) at the University of Bonn.
 
 
 License

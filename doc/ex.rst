@@ -1,3 +1,4 @@
+
 .. include:: symbols.txt
 
 Exercises
@@ -5,109 +6,295 @@ Exercises
 
 .. contents::
 
-
 Introduction
 ------------
 
-Some general remarks at the beginning: There will be an accompanying `GitHub Repository <https://github.com/grimme-lab/wp12-teaching>`_ to this course.
-In this Repository, you can find all provided input files and geometries necessary to work on the tasks.
-In addition, you can also find the manuals of the program packages TURBOMOLE7.6, COSMOtherm, VASP5.4, and CRYTSAL14.
-The `PSI4 documentation <https://psicode.org/psi4manual/master/index.html>`_ is available online.
+Some general remarks at the beginning: there is a
+`GitHub repository <https://github.com/grimme-lab/wp12-teaching>`_ accompanying this course.
+You can find all provided input files and geometries necessary to work on
+the tasks in this repository.
+In addition, we also uploaded some of the manuals of program packages used in
+this part of the course.
+The `PSI4 documentation <https://psicode.org/psi4manual/master/index.html>`_
+is only available online.
 
-Most of the other scripts give some general options if started via 
+Please note that most of the scripts and programs print a help message with available command-line
+input options if started via
 
 .. code-block:: none
 
-   [program] -h
+   [program/script] -h
+
+or alternatively via
+
+.. code-block:: none
+
+   [program/script] --help
 
 .. important::
 
-   Use only your ``/tmp1/$USER/`` folder for all calculations!
+   In contrast to other parts of WP12, only perform calculations in the ``/tmp1/$USER/`` folder of your machine!
 
 
-Noncovalent Interactions and Organic Solids
--------------------------------------------
 
-.. _Partitioning noncovalent interactions:
+.. important::
 
-Partitioning noncovalent interactions
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   To make sure you are using correct values to compute any final results, we
+   will verify each of your calculated outputs **before** you start writing
+   the report. To do so, you will have to fill out the
+   :download:`results.csv <../exercises/results.csv>` file and send it to one
+   of your tutors for verification.
 
-.. admonition:: Exercise 1.1
+   .. raw:: html
 
-   Partition the interactions of three weakly bound dimers (namely the water dimer, the
-   argon dimer, and the uracil dimer) and identify the dominant binding motifs.
+      <div style="background: rgba(128,128,128,0.15);
+                  padding: 12px 16px;
+                  border-radius: 5px;
+                  margin: 16px 0;">
+         We will <strong>not</strong> accept report submission
+         without prior verification of the results!
+      </div>
+
+   Please provide all data in units as specified in ``results.csv``. Use six
+   decimal places for absolute energies in atomic units, four decimal places
+   for values in kcal\  mol\ :sup:`-1`, and do **not** change the structure of
+   the file as this would hamper our verification process.
+
+
+
+
+Partitioning Noncovalent Interactions
+-------------------------------------
+
+.. _exercise-1:
+
+.. admonition:: Exercise 1
+
+   Partition the interactions of three weakly bound dimers (the water, argon,
+   and uracil dimers, respectively) and identify dominant binding
+   motifs. Investigate three-body dispersion using two argon
+   trimer models as examples.
 
 **Approach**
 
-We will use the symmetry-adapted perturbation theory (SAPT) implemented in ``PSI4``. For your ease, we will provide the equilibrium geometries in ``XMol`` and ``TM`` formats. Choose the appropriate one.
-The SAPT ansatz gives the ﬁrst and second-order complexation energies based on either an HF or a DFT monomer approximation:
+We will use symmetry-adapted perturbation theory (SAPT) as implemented in
+``PSI4``. For convenience, we provide equilibrium geometries in the ``xyz``
+(``XMol``) and ``TM`` formats. Choose the appropriate file format as determined
+by the software package used.
+
+The SAPT ansatz gives the ﬁrst and second-order contributions to the complexation energies based on either an HF or a DFT monomer approximation:
 
 .. math::
 
-   E_{SAPT} = E_{pol} + E_{exch} + E_{ind,resp} + E_{exch-ind,resp} + E_{disp} + E_{exch-disp}
+   E_{\mathrm{SAPT}} = E_{\mathrm{pol}} + E_{\mathrm{exch}} + E_{\mathrm{ind,resp}} + E_{\mathrm{exch-ind,resp}} + E_{\mathrm{disp}} + E_{\mathrm{exch-disp}}
 
-1. Calculate each system's HF-SAPT/aug-cc-pVQZ and AC-PBE0-SAPT/aug-cc-pVQZ (second order) binding energy at the equilibrium distance. 
-   For the DFT calculation, you need to asymptotically correct the PBE0 functional shifting the ionization potential to a reference value. 
-   For the uracil dimer, you should use a smaller aug-cc-pVTZ basis. Discuss the problems that can arise by using a smaller basis.
-   Classify the diﬀerent binding situations by separating the ﬁrst and second-order energy contributions. 
-   Explain why the diﬀerences between the HF and DFT-based SAPT energies increase in the order argon, water, and uracil.
+1. Find out to which SAPT variant the provided formula above corresponds, and then calculate each system's HF-SAPT/aug-cc-pVQZ and AC-PBE0-SAPT/aug-cc-pVQZ binding energies at the equilibrium distance. 
+   For the DFT calculation, you need to asymptotically correct the PBE0 functional by shifting the ionization potential to a reference value. 
+   For the uracil dimer, you should use a smaller aug-cc-pVTZ basis due to high computational costs. 
+   
+   - Classify the diﬀerent binding situations by separating the ﬁrst and second-order energy contributions. 
+   - Discuss the problems that can arise by using a smaller basis set.
+   - Explain why the diﬀerences between the HF and DFT-based SAPT energies increase in the order argon, water, and uracil.
 
    .. admonition:: Technical procedure
 
-      For the DFT-SAPT calculation, you need the difference between the experimental and calculated ionization energies of the monomers. You can find experimental ionization energies in the NIST database. 
-      Modify the provided input ﬁles to match your system. Modify the HF input file to choose the appropriate SAPT method for the above equation. Start the program by invoking
+      By default, PSI4 uses the default name ``input.dat`` for input and
+      ``output.dat`` for output files, which can be changed via the command-line
+      input by invoking the program with specific options:
 
       .. code-block:: none
- 
-         psi4 [options]
-  
+
+         psi4 [further options]
+
+      If PSI4 returns an error message about insufficient memory for the
+      calculation at hand, provide more memory via the keyword
+      ``--memory xxGB``, with ``xx`` being the amount of memory in gigabytes.
+      Rerun the calculation using this flag and adjust the memory as needed.
+      Modify the provided input ﬁles to be applicable to the desired systems,
+      including the specific SAPT method you want to use.
+
    .. hint::
 
-      PSI4 uses input files to perform calculations. The default input file name is ``input.dat``. You can change this via command line options. PSI4 also uses an output file ``output.dat`` by default.
-      Additional outputs may still be found in the standard output of your system. If PSI4 returns an error message about insufficient memory, try to provide the sufficient amount of memory  to the calculation with the keyword ``--memory xxGB``. You can find further information about PSI4 and SAPT calculations in the `PSI 4 documentation <https://psicode.org/psi4manual/master/sapt.html>`_.
+      For DFT-SAPT calculations, one needs the difference between the
+      experimental and calculated ionization energies of the corresponding
+      monomers. You can find experimental ionization energies in the NIST
+      database, for instance. For this exercise you may use values of 9.53 eV
+      for uracil, 15.76 eV for argon, and 12.62 eV for water.
 
-2. Calculate the HF-SAPT2/aug-cc-pVQZ potential energy surface for the argon dimer. Discuss the different first and second order contributions at the different distances
-   and plot the total electrostatic, exchange, induction, and dispersion contributions as well as the total SAPT2 interaction energy with respect to the
-   Ar\ |mult| |mult| |mult|\ Ar distance.
-   What characteristic distance dependence do you see for the ﬁrst order exchange :math:`E^{(1)}_{exch}` and the second order dispersion :math:`E^{(2)}_{disp}`?
+2. A potential energy surface (PES) scan involves systematically varying
+   an internal degree of freedom, such as a bond length, angle or dihedral,
+   where the energy of the system is evaluated as a function of that
+   chosen geometric parameter. Herein, the Ar--Ar distance is varied to obtain a
+   one-dimensional potential energy curve, allowing for an investigation of
+   SAPT contributions as a function of Ar--Ar distance:
+   
+   -  Obtain a PES scan of the argon dimer at the HF-SAPT2/aug-cc-pVQZ level
+      of theory and plot the total electrostatic, exchange, induction, and dispersion
+      contributions, as well as the total SAPT2 interaction energy, all as functions
+      of the Ar--Ar distance. Discuss the distance dependence of each first- and
+      second-order contribution.
+
+   -  What characteristic distance dependence do you observe for the first-order exchange
+      :math:`E^{(1)}_{\mathrm{exch}}` and the second-order dispersion 
+      :math:`E^{(2)}_{\mathrm{disp}}` contributions? Approximate both using a suitable
+      fit function to reproduce the respective short- and long-range behavior.
 
    .. admonition:: Technical procedure
 
-      The distance scan can easily be performed via an external bash script. 
-      To get their functional form, plot the distance dependence and ﬁt an appropriate function to the ﬁrst order exchange and second order dispersion contribution.
+      The distance scan, including the SAPT calculations,
+      can be performed with the bash script
+      given below:
+
+      .. code-block:: bash
+
+         #!/usr/bin/env bash
+
+         # name of the folder to collect all calculations in
+         calc_dir="ar_scan_sapt2"
+
+         # Check that Psi4 is available before anything else.
+         if ! command -v psi4 > /dev/null 2>&1; then
+             echo "Error: psi4 is not available."
+             exit 1
+         fi
+
+         # Create the main directory for the complete scan.
+         mkdir -p "$calc_dir"
+
+         # Generate distance array from 0.60 to 3.00 Å in steps of 0.05 Å.
+         # seq uses the form: seq start step end; -f "%.2f" formats to two decimals.
+         distances=($(seq -f "%.2f" 0.60 0.05 3.00))
+
+         # Add additional points at larger distances.
+         distances+=(4.00 5.00 6.00 8.00 10.00 15.00 20.00 30.00 35.00 40.00)
+
+         # Enter the main directory containing all calculations.
+         cd "$calc_dir"
+
+         # Run one independent calculation for each distance within a newly created subfolder.
+         for dist in "${distances[@]}"; do
+
+             # Create a separate directory for this specific distance.
+             mkdir -p "$dist"
+
+             # Write the Psi4 input file.
+             # $dist is replaced by the current Ar-Ar distance of the scan.
+             cat > "$dist/input.dat" << EOF
+         molecule argon_dimer {
+             0 1
+             Ar   0.000000   0.000000   $dist
+             --
+             0 1
+             Ar   0.000000   0.000000   0.000000
+
+             units angstrom
+             no_reorient
+             symmetry c1
+         }
+
+         set basis aug-cc-pVQZ
+
+         energy('sapt2')
+         EOF
+
+             echo "Running calculation at $dist Å"
+
+             # Enter the corresponding folder and run Psi4 there.
+             cd "$dist"
+             psi4 -i input.dat -n 8 --memory 8GB -o output.dat
+
+             # Return to the main scan directory for the next calculation.
+             cd ..
+         done
+
+      The calculated values can then be obtained by running the
+      ``parse_output_scan_sapt2.py`` Python script.
+
+.. _exercise-1-3:
+
+3. Two argon trimers with different geometries are provided in the
+   ``argon_trimers`` folder of Exercise 1 under ``exercises/ex1``. One is 
+   a trimer in linear orientation, whereas the other is in a triangular arrangement.
+
+   - Calculate the D3\ :sup:`ATM`\ (BJ) dispersion energy contributions for
+     both argon trimers by using the ``dftd3`` software, using the dispersion parameters for 
+     the TPSS meta-GGA density functional approximation.
+
+     .. admonition:: Technical procedure
+
+        Utilize ``dftd3 --help`` to obtain all required command-line input for the correct
+        dispersion energies.
+   
+
+   - Extract the ATM three-body contribution from those calculations. How does the ATM three-body contribution differ qualitatively
+     between the two arrangements and why? Further, comment on the difference in absolute magnitude of the two- and
+     three-body dispersion energies for both trimers.
 
 
-.. _Supermolecular approaches:
 
-Supermolecular approaches
-~~~~~~~~~~~~~~~~~~~~~~~~~
+.. _Supermolecular Approaches:
 
-.. admonition:: Exercise 1.2
+Supermolecular Approaches
+-------------------------
 
-   Calculate reference binding energies for the water and the argon dimer using the provided relaxed geometries.
+.. _exercise-2:
+
+.. admonition:: Exercise 2
+
+   Calculate reference binding energies for the water **and** argon dimers using
+   the provided relaxed geometries.
 
 **Approach**
 
-The reference energies are calculated in the supermolecular approach with TURBOMOLE. The binding
-energy of a two-fragment system :math:`E_{bind}` is given by the energy differences between the
-single fragments and the complete system.
+TURBOMOLE will be used to obtain all gas-phase electronic energies that are needed to
+calculate the target binding energies of the two-fragment systems :math:`E_{\mathrm{bind}}`
+investigated herein.
+
+.. admonition:: Technical procedure
+
+   TURBOMOLE needs the input generator ``cefine`` to prepare any
+   calculations. Run ``cefine -h`` to determine which options you
+   have to choose for your intended calculation. Please note that you **must**
+   add ``-sym c1`` to **all** cefine calls to avoid any symmetry-related problems.
+   After preparing the input files with ``cefine``, proceed with the
+   calculations as described in the instructions below, or consult the TURBOMOLE
+   manual for further guidance.
+
+The binding (or association) energy in the supermolecular approach is generally defined as
+
+.. math::
+   E_{\mathrm{bind}} = E^{\mathrm{AB}} - E^{\mathrm{A}} - E^{\mathrm{B}}\,,
+
+with :math:`E^{\mathrm{A}}` and :math:`E^{\mathrm{B}}` being the electronic energies
+of the isolated fragments as calculated using fully relaxed fragment geometries, whereas
+:math:`E^{\mathrm{AB}}` is the electronic energy of the optimized dimer.
+
+Recall from QC1 that the correlation energy of a post-Hartree-Fock method exhibits distinctly
+slower convergence behavior with respect to the basis set size compared to the Hartree-Fock energy 
+(SCF energy in the following) itself. Using different extrapolation schemes, one can make use of this observation to extrapolate
+correlation energies to the basis set limit.
+
+Herein, we choose the following two specific functional forms for the extrapolations:
 
 .. math::
 
-	E_{bind} = E^{AB} - E^{A} - E^{B}
-
-The extrapolation to the basis set limit can be done by assuming a certain functional form.
+   E_{\mathrm{SCF}}^{(X_k)} = E_{\mathrm{SCF}}^{(\infty)} + A \cdot e^{-\alpha_{X_i,X_j} \sqrt{X_k}}
 
 .. math::
 
-	E_{SCF}^{(X)} = E_{SCF}^{(\infty)} + A \cdot e^{-\alpha \sqrt{X}}
+   E_{\mathrm{corr}}^{(X_k)} = E_{\mathrm{corr}}^{(\infty)} + B \cdot X_k^{-\beta_{X_i,X_j}}
 
-.. math::
+:math:`E_{\mathrm{SCF}}^{(X_k)}` is the SCF energy for a given cardinal number :math:`X_k` that
+is extrapolated to the basis set limit (:math:`X_k \to\infty`) using a molecule-specific prefactor 
+:math:`A` and a corresponding exponent :math:`\alpha_{X_i,X_j}` that depends on the chosen basis
+set family and the specific cardinal numbers :math:`X_i` and :math:`X_j` employed in the
+extrapolation. Similarly, :math:`E_{\mathrm{corr}}^{(X_k)}` is the correlation energy for a given cardinal number
+:math:`X_k` that is extrapolated to the basis set limit using another molecule-specific prefactor
+:math:`B` with the exponent :math:`\beta_{X_i,X_j}`.
 
-	E_{corr}^{(X)} = E_{corr}^{(\infty)} + A \cdot X^{-\beta}
+Use the following optimized exponents for your extrapolations:
 
-The following exponents have been optimized according to the different basis sets.
+.. Optimized coefficients as taken from https://doi.org/10.1021/ct100396y
 
 +---------------------+----------------------+---------------------+----------------------+---------------------+
 |                     | :math:`\alpha_{2,3}` | :math:`\beta_{2,3}` | :math:`\alpha_{3,4}` | :math:`\beta_{3,4}` |
@@ -121,182 +308,147 @@ The following exponents have been optimized according to the different basis set
 | def2-\ **X**\ ZVP   |                10.39 |                2.40 |                 7.88 |                2.97 |
 +---------------------+----------------------+---------------------+----------------------+---------------------+
 
-
-1. Calculate the CCSD(T) energy (coupled cluster including singles, doubles and perturbative
-   triples) in the aug-cc-pV\ **T**\ Z basis set. Why is the usage of augmented dunning basis sets
-   reasonable?
-
-2. Calculate the MP2 energy (M\ |crosso|\ ller-Plesset second order perturbation theory) in the
-   aug-cc-pV\ **T**\ Z and aug-cc-pV\ **Q**\ Z basis sets.
+1. Calculate all required CCSD(T) energies (coupled cluster including singles, doubles
+   and perturbative triples) in the aug-cc-pV\ **T**\ Z basis set.
 
    .. admonition:: Technical procedure
 
-      Use the TURBOMOLE input generator ``cefine_current`` to prepare the calculations (try ``-h`` to figure out which options you have to use). 
-      Generally add ``-sym c1`` to your cefine call to avoid smmetry-related problems.
-      First do a canonical Hartree-Fock calculation (``ridft``) and then compute the correlation
-      energy (``ccsdf12`` for CCSD(T) and ``ricc2`` for MP2).
+      First, set up your calculation via ``cefine``. Then, to obtain a CCSD(T) energy,
+      perform a canonical Hartree-Fock calculation with ``ridft``. Last, the correlation energy
+      can be obtained by employing TURBOMOLE's ``ccsdf12``.
 
-3. Use the MP2 energies to extrapolate the CCSD(T) values to the complete basis set limit and
-   discuss the results. Explain why this two-point extrapolation is justified. Compare the
-   CCSD(T)/CBS(est.) energies with the plain Hartree-Fock values and the AC-PBE0-SAPT values. Which
-   contributions to the binding energy are still missing, *i.e.* which errors are made?
+2. Calculate all required MP2 energies (second-order M\ |crosso|\ ller–Plesset perturbation
+   theory) in the aug-cc-pV\ **T**\ Z and aug-cc-pV\ **Q**\ Z basis sets.
+
+   .. admonition:: Technical procedure
+
+      Similar to the CCSD(T) workflow, you need to start with a canonical Hartree-Fock
+      calculation with ``ridft`` after input preparations with ``cefine``.
+      For MP2, this is followed by a computation of the correlation energy with ``ricc2``.
+
+3. Use the MP2 energies to extrapolate the CCSD(T) binding energies to the complete
+   basis set limit and discuss the following questions and statements:
+
+   - Specifically considering what systems are under study herein, do the CCSD(T)
+     energies require an extrapolation to the basis set limit and why/why not?
+
+   - Explain why a two-point extrapolation scheme seems justified. Why are **augmented**
+     *Dunning* basis sets a reasonable choice for this?
+   
+   - Compare your estimates for the CCSD(T)/CBS energies with corresponding values of
+     plain Hartree–Fock calculations, the AC-PBE0-SAPT values from Exercise 1, and
+     values from the literature. Explain your observations by discussing deviations between
+     methods and determine potential sources of error compared to the reference values.
+     Again, consider what target properties are under study.
 
 
-.. _Molecules in solution:
+.. _Molecules in Solution:
 
-Molecules in solution
-~~~~~~~~~~~~~~~~~~~~~
+Molecules in Solution
+---------------------
 
-.. admonition:: Exercise 1.3
+.. _exercise-3:
 
-   Calculate the equilibrium association free energy :math:`\Delta G_a` of a molecular "tweezer"
-   with tetracyanoquinone (TCNQ) at room temperature solvated in **toluene**.
+.. admonition:: Exercise 3
+
+   Calculate the association (binding) Gibbs free energy
+   :math:`\Delta G_{\mathrm{a}}` of a molecular tweezer with
+   tetracyanoquinone (TCNQ) in toluene at room temperature.
 
 **Approach**
 
-The host-guest system is again treated in a supermolecular approach. The association free energy
-:math:`\Delta G_a` is given by
+The host-guest system is again treated in a supermolecular approach. The
+association (binding) Gibbs free energy :math:`\Delta G_{\mathrm{a}}` is thus given by
 
 .. math::
 
-   \Delta G_{a} = \Delta E + \Delta G_{RRHO}^{T} + \Delta \delta G_{solv}^{T}(X)
+   \Delta G_{\mathrm{a}} = \Delta E + \Delta G_{\mathrm{mRRHO}}^{T} + \Delta \delta G_{\mathrm{solv}}^{T}\,,
 
-with the electronic gas phase association energy :math:`\Delta E`, a correction to free energies in
-the rigid rotor harmonic oscillator approximation :math:`\Delta G_{RRHO}^{T}`, and a correction to
-the solvation free energy :math:`\Delta \delta G_{solv}^{T}(X)`. These contributions depend
-explicitly on the temperature and solvent.
+with the electronic gas-phase association energy :math:`\Delta E`, a correction
+to obtain Gibbs free energies using the modified rigid-rotor harmonic-oscillator (mRRHO) model
+:math:`\Delta G_{\mathrm{mRRHO}}^{T}`, and a solvation correction
+:math:`\Delta \delta G_{\mathrm{solv}}^{T}`.
+Both these contributions explicitly depend on the temperature and solvent used.
 
 .. hint::
+   
+   The experimental association Gibbs free energy of the host-guest complex in toluene at
+   room temperature was measured to be
+   :math:`\Delta G_{\mathrm{a}}^{(298\,\mathrm{K})} = -4.50` kcal\  mol\ :sup:`-1`.
 
-   Experimental value: :math:`\Delta G_{a}^{(298 K)} = -4.50` kcal\ |mult|\ mol\ :sup:`-1`
+.. _exercise-3-1:
 
-1. Calculate the electronic energy contribution with the (two- and three-body dispersion) corrected
-   meta-GGA density functional TPSS-D3\ :sup:`ATM`\ (BJ) in the def-TZVP single particle basis set.
-   Correct for the basis set superposition error via the geometrical counterpoise correction (gCP).
+1. Calculate the electronic energies of the host, guest, and resulting complex
+   at the PBE0/def2-TZVP level of theory with TURBOMOLE. Use the PBE0-D4/def2-TZVP (CPCM, toluene)
+   geometries provided in the repository as input structures, but **not** the
+   ``alternative_geometry.xyz`` file for the host-guest complex.
 
-   .. admonition:: Technical procedure
+2. Calculate the corresponding D3\ :sup:`ATM`\ (BJ) dispersion energies **of the same structures**
+   from :ref:`Exercise 3.1 <exercise-3-1>` via ``dftd3``. Also extract the three-body contribution from each output.
 
-      TPSS-D3/def-TZVP geometries are provided. Calculate a TPSS single-point energy with TURBOMOLE.
-      Calculate the D3\ :sup:`ATM`\ (BJ) contribution with the ``dftd3`` standalone program.
-      (Attention: ``cefine`` sets a dispersion correction by default. Make sure that you don't
-      double-count it.) The counterpoise correction can be calculated with the ``gcp`` program. Use the ``-h`` (help) option of dftd3 and gcp to figure out the desired options. Make sure you are using the correct gcp version (v2.01), if not try loading the program with ``module load gcp/2.01`` 
+   .. important::
 
-2. Calculate the vibrational contributions in the rigid rotor harmonic oscillator model at the
-   semiempirical GFN2-xTB level.
-
-   .. admonition:: Technical procedure
-
-      First, re-optimize the TPSS-D3 geometries at the GFN2-xTB level. Then calculate the second
-      derivatives and read the thermodynamic functions printout in the RRHO approximation of the
-      GFN2-xTB program. Further information is given in Section :ref:`GFN-xTB`.
-
-3. Compute the solvent corrections with COSMO-RS.
-
-   .. admonition:: Technical procedure
-
-      The COSMO-RS model can be used via TURBOMOLE and the ``cosmosolv_prak`` script (option
-      ``-scf``). The input file ``~/.cosmothermrc`` has to be modified to match the correct solvent
-      (see Section :ref:`COSMOtherm`).
-
-
-.. _Organic solids:
-
-Organic solids
-~~~~~~~~~~~~~~
-
-.. admonition:: Exercise 1.4
-
-   Calculate the sublimation enthalpy of the urea crystal at room temperature.
-
-**Approach**
-
-The sublimation enthalpy :math:`\Delta H_{sub}` at temperature :math:`T` is given by the enthalpy
-difference of the two phases:
-
-.. math::
-
-	\Delta H_{sub} = H^{g} - H^{s}
-
-.. math::
-
-	H^{i} = E_{el}^{i} + E_{trans}^{i} + E_{rot}^{i} + E_{vib}^{i} + pV
-
-The gas phase is thereby denoted with the index :math:`g`, the solid phase with :math:`s`. The
-enthalpy :math:`H` is the total internal energy :math:`E_{tot}` with the inclusion of the volume
-work :math:`pV`. The indices correspond to the electronic (:math:`el`), translational
-(:math:`trans`), rotational (:math:`rot`), and vibrational (:math:`vib`) contributions to the total
-internal energy. The rotational and vibrational contributions to the gas phase free energy are
-typically modeled by an ideal gas. The vibrational contributions are treated in the harmonic
-approximation:
-
-.. math::
-
-	E_{vib}(T) = \sum_{k}^{modes} \left( \frac{\hbar\omega_k}{2} + \frac{\hbar\omega_k}{\text{exp}\left(\frac{\hbar\omega_k}{k_BT}\right)-1} \right)
-
-.. hint::
-
-   Experimental value: :math:`\Delta H_{sub}^{(298 K)} = 22.42` kcal\ |mult|\ mol\ :sup:`-1`
-
-
-1. Convert the Crystallographic Information File (``urea_113.cif``) into CRYSTAL 14 ``fort.34``
-   format.
-
-   .. admonition:: Technical procedure
-
-      The ``.cif`` file can be converted by small programs to generate the ``fort.34`` file, *e.g.*
-      via:
-
-      .. code-block:: none
-
-         cif2crystal urea_113
-
-   Note that the gas phase geometry will be automatically generated within a large unit cell
-   (minimum distance to image of 12 |angst|) and the crystal geometry includes all symmetry
-   transformations of the required space group.
-
-   .. hint:: 
+      Please note that ``cefine`` sets a specific dispersion correction by default, so make sure
+      to not double-count! Use the help sections (``-h``) of ``dftd3`` and
+      ``cefine`` to figure out the correct command-line input options. 
       
-      Remember to activate the ``py27`` environment to make ``cif2crystal`` work correctly.
+      Also, due to internal file reader specifications, you cannot calculate 
+      the dispersion contributions **after** having used ``cefine`` already. Hence,
+      use a "fresh" coord file in an isolated directory or always calculate the
+      dispersion contribution *before* preparing the TURBOMOLE calculation with  
+      ``cefine``.
 
-2. Calculate the electronic energies at the TPSS-D3\ :sup:`ATM`\ (BJ)/600 eV level. How large is the
-   London dispersion contribution to the lattice energy?
+.. _exercise-3-3:
 
-   .. admonition:: Technical procedure
-
-      Fully optimized (TPSS-D3\ :sup:`ATM`\ (BJ)) geometries for the urea molecule and the urea
-      solid are available. Adjust the Brillouin sampling to a :math:`k` grid of approximately 1/35
-      Bohr\ :sup:`-1`. Use VASP 5.4 to calculate a TPSS-D3\ :sup:`ATM`\ (BJ)/600 eV single-point
-      energy for the gas and solid phase. The calculations can be done via the CRYSTAL 14 interface. 
-      Note that due to some internal restructuring for the VASP calculation, the interface broke. 
-      You can nevertheless obtain the correct energy using the command below to generate the vasp
-      input file, do the VASP calculation by simply typing in ``vasp`` and then collect the results 
-      by again typing the command below.
-
-      .. code-block:: none
-
-         crystal_interface < INPUT > crystal.out
-
-3. Calculate the free energy corrections at the semiempirical DFTB3-D3 level. Compare the
-   electronic energy of the tight-binding model to the DFT one.
+3. Reoptimize the given molecular structures of the host, guest, and complex
+   at the semiempirical GFN2-xTB level, including implicit solvation in toluene as
+   treated with the ALPB (analytical linearized Poisson-Boltzmann) solvation model.
+   Use the resulting optimized geometries to calculate the thermostatistical
+   contributions to the association Gibbs free energy :math:`\Delta G_{\mathrm{mRRHO}}^{T}`
+   with the modified rigid-rotor harmonic-oscillator (mRRHO) model.
 
    .. admonition:: Technical procedure
 
-      a. Re-optimize the TPSS-D3\ :sup:`ATM`\ (BJ) geometries of both phases with the CRYSTAL 14
-         program and the DFTB3-D3 Hamiltonian. Modify the ``INPUT`` file for the solid to sample
-         the :math:`k`-space identical to 1. Start the program by:
+      Use the ``extreme`` optimization level for all reoptimizations.
 
-         .. code-block:: none
+4. Compute the solvation energies of the host, guest, and final complex as computed with
+   the COSMO-RS (COnductor-like Screening MOdel for Real Solvents) model for toluene,
+   using the optimized geometries provided in the repository.
 
-            crystal_interface < INPUT > crystal.out
+   .. admonition:: Technical procedure
 
-      b. Calculate the phonon spectrum at the :math:`\Gamma`-point with identical setup at the
-         optimized geometry. In order to include low-lying (acoustic) modes of the solid, a
-         supercell has to be generated (you find proper placeholders in the ``INPUT`` file).
-         Increase the supercell until the energy contributions are converged within
-         0.1 kcal\ |mult|\ mol\ :sup:`-1`. The contributions can be taken from the output blocks
-         in the calculation output entitled ``HARMONIC VIBRATIONAL CONTRIBUTIONS`` and
-         ``THERMODYNAMIC FUNCTIONS``.
+      The ``cosmosolv_prak`` (option ``-scf``) script initiates two single-point
+      calculations with TURBOMOLE, where one single-point calculation is
+      in the gas phase and the other in the solution phase. The difference
+      in computed energies yields the solvation energy of a species.
+      
+      Make sure that a correct ``.cosmothermrc`` file is present in your home
+      directory (see :ref:`COSMOtherm` section). Use the ``Gsolv+VWork(298.15 K)``
+      output as the value for the solvation energy.
 
-4. Compare the calculated sublimation enthalpy with the experimental one. Explain why no thermal
-   effects are included in the DFT energy and how this energy could be improved. Which significant
-   approximations are applied in the overall model for the enthalpy correction?
+5. Combine all computed Gibbs free energy contributions to obtain a final value for the
+   association Gibbs free energy :math:`\Delta G_{\mathrm{a}}^{(298\,\mathrm{K})}` at
+   room temperature in toluene. Consider the following questions and critically
+   analyze your computed results:
+   
+   - Why do you think your computed :math:`\Delta G_{\mathrm{a}}^{(298\,\mathrm{K})}`
+     differs from the experimental value and could any of the potential sources of error be
+     investigated computationally?
+   - Compare the calculated three-body dispersion correction of the
+     host-guest complex with the ones obtained for the argon trimers from
+     :ref:`Exercise 1.3 <exercise-1-3>`. How does the three-body dispersion
+     term contribute to the association Gibbs free energy herein and what do you conclude from this for
+     the importance of this contribution in the context of non-covalent
+     interactions between extended molecular systems in general?
+   - Why is a re-optimization of the provided geometries necessary within
+     :ref:`Exercise 3.3 <exercise-3-3>` prior to obtaining thermostatistical contributions?
+   - Discuss the difference between the ``Gsolv(298.15 K)`` and ``Gsolv+VWork(298.15 K)``
+     solvation energy outputs of the ``cosmosolv_prak`` script for the three computed species and
+     its significance for the computed association Gibbs free energy.
+
+6. Another geometry for the host-guest complex, the ``alternative_geometry.xyz`` file, is also
+   provided in the repository and can be similarly employed in the steps described above to give
+   an association Gibbs free energy of
+   :math:`\Delta G_{\mathrm{a}}^{(298\,\mathrm{K})} = -4.53` kcal\  \ mol\ :sup:`-1`. Comment on 
+   this result and discuss its implications for the reliability of the above workflow 
+   and your calculations in particular.

@@ -1,0 +1,124 @@
+Ex1,,
+,,
+,,
+Ar2,,
+HF-SAPT,,
+Epol,,kcal/mol
+Eexch,,kcal/mol
+"Eind,resp",,kcal/mol
+"Eexch-ind,resp",,kcal/mol
+Edisp,,kcal/mol
+Eexch-disp,,kcal/mol
+,,
+DFT-SAPT,,
+GRAC,,Hartree
+Epol,,kcal/mol
+Eexch,,kcal/mol
+"Eind,resp",,kcal/mol
+"Eexch-ind,resp",,kcal/mol
+Edisp,,kcal/mol
+Eexch-disp,,kcal/mol
+,,
+,,
+(H2O)2,,
+HF-SAPT,,
+Epol,,kcal/mol
+Eexch,,kcal/mol
+"Eind,resp",,kcal/mol
+"Eexch-ind,resp",,kcal/mol
+Edisp,,kcal/mol
+Eexch-disp,,kcal/mol
+,,
+DFT-SAPT,,
+GRAC,,Hartree
+Epol,,kcal/mol
+Eexch,,kcal/mol
+"Eind,resp",,kcal/mol
+"Eexch-ind,resp",,kcal/mol
+Edisp,,kcal/mol
+Eexch-disp,,kcal/mol
+,,
+,,
+(uracil)2,,
+HF-SAPT,,
+Epol,,kcal/mol
+Eexch,,kcal/mol
+"Eind,resp",,kcal/mol
+"Eexch-ind,resp",,kcal/mol
+Edisp,,kcal/mol
+Eexch-disp,,kcal/mol
+,,
+DFT-SAPT,,
+GRAC,,Hartree
+Epol,,kcal/mol
+Eexch,,kcal/mol
+"Eind,resp",,kcal/mol
+"Eexch-ind,resp",,kcal/mol
+Edisp,,kcal/mol
+Eexch-disp,,kcal/mol
+,,
+,,
+Ar3 (triangular),,
+Dispersion correction energy (DFTD3-BJ+ATM),,Hartree
+ATM 3-body dispersion term only ,,Hartree
+,,
+Ar3 (linear),,
+Dispersion correction energy (DFTD3-BJ+ATM),,Hartree
+ATM 3-body dispersion term only ,,Hartree
+,,
+,,
+Ex2,,
+,,
+,,
+Ar monomer,,
+HF/aug-cc-pVTZ ,,Hartree
+HF/aug-cc-pVQZ ,,Hartree
+MP2/aug-cc-pVTZ correlation energy,,Hartree
+MP2/aug-cc-pVQZ correlation energy,,Hartree
+CCSD(T)/aug-cc-pVTZ correlation energy,,Hartree
+,,
+Ar dimer,,
+HF/aug-cc-pVTZ ,,Hartree
+HF/aug-cc-pVQZ ,,Hartree
+MP2/aug-cc-pVTZ correlation energy,,Hartree
+MP2/aug-cc-pVQZ correlation energy,,Hartree
+CCSD(T)/aug-cc-pVTZ correlation energy,,Hartree
+,,
+H2O monomer,,
+HF/aug-cc-pVTZ ,,Hartree
+HF/aug-cc-pVQZ ,,Hartree
+MP2/aug-cc-pVTZ correlation energy,,Hartree
+MP2/aug-cc-pVQZ correlation energy,,Hartree
+CCSD(T)/aug-cc-pVTZ correlation energy,,Hartree
+,,
+H2O dimer,,
+HF/aug-cc-pVTZ ,,Hartree
+HF/aug-cc-pVQZ ,,Hartree
+MP2/aug-cc-pVTZ correlation energy,,Hartree
+MP2/aug-cc-pVQZ correlation energy,,Hartree
+CCSD(T)/aug-cc-pVTZ correlation energy,,Hartree
+,,
+,,
+Ex3,,
+,,
+,,
+Host,,
+SP energy (PBE0/def2-TZVP),,Hartree
+Dispersion correction energy (DFTD3-BJ+ATM),,Hartree
+ATM 3-body dispersion term only ,,Hartree
+"delta G vibrational (mRRHO: GFN2-xTB, alpb(toluene))",,Hartree
+COSMO-RS Gsolv+VWork(298.15 K),,Hartree
+,,
+Guest,,
+SP energy (PBE0/def2-TZVP),,Hartree
+Dispersion correction energy (DFTD3-BJ+ATM),,Hartree
+ATM 3-body dispersion term only ,,Hartree
+"delta G vibrational (mRRHO: GFN2-xTB, alpb(toluene))",,Hartree
+COSMO-RS Gsolv+VWork(298.15 K),,Hartree
+,,
+Complex,,
+SP energy (PBE0/def2-TZVP),,Hartree
+Dispersion correction energy (DFTD3-BJ+ATM),,Hartree
+ATM 3-body dispersion term only ,,Hartree
+"delta G vibrational (mRRHO: GFN2-xTB, alpb(toluene))",,Hartree
+COSMO-RS Gsolv+VWork(298.15 K),,Hartree
