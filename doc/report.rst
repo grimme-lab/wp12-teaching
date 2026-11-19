@@ -148,3 +148,14 @@ Your report must contain answers to every exercise question, discuss
 the results properly, and include the essential computational details and citations. 
 Please ensure all these criteria are met. We typically only allow one round of extensive
 revisions prior to acceptance of the reports.
+
+Use of Artificial Intelligence
+------------------------------
+
+.. important::
+
+   AI tools may only be used to assist with writing the report.
+   All AI-assisted content must be carefully reviewed, verified,
+   and revised by you, the author, who remains fully responsible for
+   the final content. Futher, any use of AI tools must be explicitly
+   disclosed in the report, including the specific model(s) used.

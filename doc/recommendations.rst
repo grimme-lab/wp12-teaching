@@ -28,7 +28,13 @@ Any program may cause a variety of problems. It is thus helpful to follow a few 
 Further Reading
 ---------------
 
-If this is your first time working with Linux or quantum chemistry software, fear not; we still have you covered. You can find additional resources in our quantum chemistry II script and on eCampus:
+If this is your first time working with Linux or quantum chemistry software, fear not;
+we still have you covered. You can find additional resources in our quantum chemistry II
+script and on eCampus.
+
+You are **not** expected to read or fully understand all of the resources listed below.
+However, most of the concepts relevant to the practical course *are* explained or
+applied in these references, which you can thus consult for further understanding:
 
 - **Introductory resources**
 
@@ -58,3 +64,13 @@ If this is your first time working with Linux or quantum chemistry software, fea
   - Patkowski (2020), *Recent developments in symmetry-adapted perturbation theory*. `10.1002/wcms.1452 <https://doi.org/10.1002/wcms.1452>`__
   - Grimme et al. (2016), *Dispersion-Corrected Mean-Field Electronic Structure Methods*. `10.1021/acs.chemrev.5b00533 <https://doi.org/10.1021/acs.chemrev.5b00533>`__
   - Xu, Alkan & Gordon (2020), *Many-Body Dispersion*. `10.1021/acs.chemrev.0c00216 <https://doi.org/10.1021/acs.chemrev.0c00216>`__
+
+- **Benchmarking and Wavefunction Methods for NCIs**
+
+  - Karton & de Oliveira (2025), *Good Practices in Database Generation for Benchmarking Density Functional Theory*.
+    `10.1002/wcms.1737 <https://doi.org/10.1002/wcms.1737>`_
+  - Werner & Hansen (2023), *Accurate Calculation of Isomerization and Conformational Energies of Larger Molecules Using Explicitly Correlated Local Coupled Cluster Methods in Molpro and ORCA*.
+    `10.1021/acs.jctc.3c00270 <https://doi.org/10.1021/acs.jctc.3c00270>`_
+  - Hansen, Knowles & Werner (2025), *Accurate Calculation of Noncovalent Interactions Using PNO-LCCSD(T)-F12 in Molpro*.
+    `10.1021/acs.jpca.5c02316 <https://doi.org/10.1021/acs.jpca.5c02316>`_
+
